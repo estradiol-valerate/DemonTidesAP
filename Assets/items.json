@@ -1,0 +1,1242 @@
+{
+    "b8182536-acf0-456c-b61b-4c2d8c825968": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker at a junction.",
+        "type": "Gear"
+    },
+    "1d8f69a7-94eb-4ec1-8be7-12c9e7b5daa4": {
+        "name": "Golden Gear",
+        "description": "A smoky gear on top of a smokestack.",
+        "type": "Gear"
+    },
+    "17f6edf5-7dd5-4ae4-94a4-4bf8fc1f04ba": {
+        "name": "Golden Gear",
+        "description": "Radios, rings and races!",
+        "type": "Gear"
+    },
+    "d238061e-7778-40b6-b983-2ddd6d15edf2": {
+        "name": "Golden Gear",
+        "description": "Fixed a windmill and got a gear.",
+        "type": "Gear"
+    },
+    "efa20536-dd8f-43c2-9dbc-29e0f623a0f6": {
+        "name": "Golden Gear",
+        "description": "Storing gears on top of a warehouse.",
+        "type": "Gear"
+    },
+    "8bc92076-20c7-445e-8883-83ff0e2dfc24": {
+        "name": "Golden Gear",
+        "description": "Helped find a dad's kid amongst the chaos.",
+        "type": "Gear"
+    },
+    "ebb563f7-b810-4a98-adb5-d3b548c83758": {
+        "name": "Golden Gear",
+        "description": "A gear amongst the cranes.",
+        "type": "Gear"
+    },
+    "21d1cb9e-8dae-49bb-bd34-c829d7c4a9c6": {
+        "name": "Golden Gear",
+        "description": "Neighborhood was rough on this gear.",
+        "type": "Gear"
+    },
+    "2700e2dc-3630-4d3c-a06b-84879328fe79": {
+        "name": "Golden Gear",
+        "description": "Stopped Jester's crystal drilling.",
+        "type": "Gear"
+    },
+    "b6a38925-4d67-4c93-b644-d14bd6102fb0": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker in the skies.",
+        "type": "Gear"
+    },
+    "c4b2b435-a241-4058-99f5-36e91e40956e": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker at a junction.",
+        "type": "Gear"
+    },
+    "ee9af3c2-b8e1-4d38-a372-36323995f6a7": {
+        "name": "Golden Gear",
+        "description": "Managed the invisible climb!",
+        "type": "Gear"
+    },
+    "2b1c40ee-17e8-475b-aa16-1445ba39e644": {
+        "name": "Golden Gear",
+        "description": "Raised from the graaaave!",
+        "type": "Gear"
+    },
+    "8c8f4612-a043-4623-994f-a0f0f44d6bbb": {
+        "name": "Golden Gear",
+        "description": "Rescued a lost baby Kappernian.",
+        "type": "Gear"
+    },
+    "771d1538-3e0a-41d5-b6e9-d77babee52bd": {
+        "name": "Golden Gear",
+        "description": "Found it in inaccessible ruins!",
+        "type": "Gear"
+    },
+    "54ed1036-b146-4561-a8a6-c087dd8fddcb": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker at the factory.",
+        "type": "Gear"
+    },
+    "44bbb89a-64e2-43a9-8a97-d9320d8b8e52": {
+        "name": "Golden Gear",
+        "description": "Collected gear chunks in the ice.",
+        "type": "Gear"
+    },
+    "14fd0074-cf85-4a2c-86fd-c0790a1a8877": {
+        "name": "Golden Gear",
+        "description": "How'd the baby get up there?!",
+        "type": "Gear"
+    },
+    "0c07a885-c6b2-47ed-91be-9005907e7135": {
+        "name": "Golden Gear",
+        "description": "Collected chunks amongst a storm.",
+        "type": "Gear"
+    },
+    "d04d0ecf-6e07-401e-b714-a11cd956e7a0": {
+        "name": "Golden Gear",
+        "description": "Beat a gearserker at night.",
+        "type": "Gear"
+    },
+    "334aa1ad-a7bf-427d-aad5-c9b5a6851816": {
+        "name": "Golden Gear",
+        "description": "Beat a ring race around the ice.",
+        "type": "Gear"
+    },
+    "0822f429-0f7b-4acf-99f9-0d251d6b0821": {
+        "name": "Golden Gear",
+        "description": "Beat the optica challenge.",
+        "type": "Gear"
+    },
+    "4777bcc4-4bc4-483a-8d4d-a568a38208b8": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker among village ruins.",
+        "type": "Gear"
+    },
+    "f9fdf19e-a85d-4c2b-9725-c07551fc3774": {
+        "name": "Golden Gear",
+        "description": "A race in the dark!",
+        "type": "Gear"
+    },
+    "556088bb-1906-4d31-bd86-768552d1280e": {
+        "name": "Golden Gear",
+        "description": "Found among scientists' satellites.",
+        "type": "Gear"
+    },
+    "d124515a-f33a-4be4-a75d-51c703057f47": {
+        "name": "Golden Gear",
+        "description": "Climbed a Burg to reunite a mom.",
+        "type": "Gear"
+    },
+    "2b8348a7-d1e0-48db-aea1-cee536c368e1": {
+        "name": "Golden Gear",
+        "description": "Reunited a family amongst volcanoes.",
+        "type": "Gear"
+    },
+    "13c9705e-3b34-40f8-bc03-f208a48269d9": {
+        "name": "Golden Gear",
+        "description": "Raced a drone across volcanoes.",
+        "type": "Gear"
+    },
+    "78e9fcef-8312-4886-a9e5-ffbef48124a5": {
+        "name": "Golden Gear",
+        "description": "Found a gear within a village.",
+        "type": "Gear"
+    },
+    "348e0f78-6b6d-497c-9013-ed2e6500ec9d": {
+        "name": "Golden Gear",
+        "description": "Avoided the lasers for a gear.",
+        "type": "Gear"
+    },
+    "9691e282-09e6-4c08-98fe-deeb515ea19d": {
+        "name": "Golden Gear",
+        "description": "Found a gear inside a giant furnace.",
+        "type": "Gear"
+    },
+    "ca56ad4d-aabf-425c-b55d-9f7b678f3cfa": {
+        "name": "Golden Gear",
+        "description": "Who knew these caves were haunted?!",
+        "type": "Gear"
+    },
+    "53021f1e-1d8d-4367-a826-3a460eb4c259": {
+        "name": "Golden Gear",
+        "description": "Pole vaulting in the hole of death.",
+        "type": "Gear"
+    },
+    "fb45cdad-d0fa-47ef-9911-42ba762431ad": {
+        "name": "Golden Gear",
+        "description": "Explored a ravenous river for this gear!",
+        "type": "Gear"
+    },
+    "7d363363-b59d-495f-baff-bbd189e94560": {
+        "name": "Golden Gear",
+        "description": "Won a race down some nasty sewers.",
+        "type": "Gear"
+    },
+    "44783850-0201-4bc6-966a-395e5eba92fe": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker among modern ruins.",
+        "type": "Gear"
+    },
+    "c002e50a-9516-4365-aa4d-ec474c305ab8": {
+        "name": "Golden Gear",
+        "description": "Took a ride to the skies for this gear.",
+        "type": "Gear"
+    },
+    "7c666c19-0679-42fe-86a1-aa8caac1cee1": {
+        "name": "Golden Gear",
+        "description": "Collected a bunch of gear bits sky high.",
+        "type": "Gear"
+    },
+    "ab58ad9c-98ba-4f53-856a-7cae08b7f2b8": {
+        "name": "Golden Gear",
+        "description": "Found atop crumbling shrooms stuck in time.",
+        "type": "Gear"
+    },
+    "0049b9d1-12ae-4412-8f80-066e7092f1d8": {
+        "name": "Golden Gear",
+        "description": "A golden gear inside a static cyclone?!",
+        "type": "Gear"
+    },
+    "5e8bc06f-7d90-422e-8ab0-3e6477aaaa02": {
+        "name": "Golden Gear",
+        "description": "Beat down a Gearserker in a jail!",
+        "type": "Gear"
+    },
+    "c1485ac7-3038-437d-934e-e584e0f3e944": {
+        "name": "Golden Gear",
+        "description": "Rang all the bells and found a gear.",
+        "type": "Gear"
+    },
+    "8da23e11-c76c-4765-8c42-3e6ae146d520": {
+        "name": "Golden Gear",
+        "description": "A gear chunk race across time.",
+        "type": "Gear"
+    },
+    "75ad5adc-7a13-4304-9e6b-02d9898cac0b": {
+        "name": "Golden Gear",
+        "description": "Beat up baddies and saved some villagers.",
+        "type": "Gear"
+    },
+    "00689cad-ebbb-4585-8334-7d5c1eaeba3d": {
+        "name": "Golden Gear",
+        "description": "Beat a Gearserker inside an ancient mine.",
+        "type": "Gear"
+    },
+    "0d90281d-ff36-4c50-8fb5-40c672da5916": {
+        "name": "The Classic",
+        "description": "Always had it.",
+        "type": "Outfit"
+    },
+    "b0eb2e54-23e8-4079-a89a-c01d03238487": {
+        "name": "Neon Splash Dress",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "e1d51818-c82e-42e5-be80-405274eebec5": {
+        "name": "Tower Dress",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "ad65d6ea-91bf-41b1-9b74-8e84609850f1": {
+        "name": "Swimsuit",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "1cb56e49-96e5-4e9b-a055-f17f74c9906a": {
+        "name": "The Classic",
+        "description": "From sleeping.",
+        "type": "Outfit"
+    },
+    "c198dbf8-b45f-479a-a43f-1063b0071c0f": {
+        "name": "Bob Cut",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "e7dc10eb-f42a-4bba-9a69-4f53304b6fc4": {
+        "name": "Buzz Cut",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "8a2a2c6d-25b5-4356-bc15-9cee461c3736": {
+        "name": "Clown",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "2bf3781c-7389-472c-b55c-9836b5070dec": {
+        "name": "Chum Cosplay",
+        "description": "Getting chummy with water rings.",
+        "type": "Outfit"
+    },
+    "416887b3-969b-40ca-a619-2c52663a4db4": {
+        "name": "Angry Chum",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "59cf2c16-0346-4540-b408-aff1ce5b0b3e": {
+        "name": "Chum Cosplay",
+        "description": "Head-on collision in the chum factory.",
+        "type": "Outfit"
+    },
+    "20a6ef19-0bbf-4bd9-b33a-c7fb4bdd108b": {
+        "name": "Angry Chum",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "77ed4b86-c30d-4ab5-96a8-549dbf8e86a9": {
+        "name": "Neon Drip",
+        "description": "Quick dip to get the drip",
+        "type": "Outfit"
+    },
+    "486507d8-07dc-4c99-bb9b-95fbd7b243c2": {
+        "name": "Sleeveless Drip",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "18e7875c-28d3-4f50-840d-a6f2a8d876fa": {
+        "name": "Neon Drip",
+        "description": "The key to good fashion.",
+        "type": "Outfit"
+    },
+    "58b8d9f7-6297-4277-aa16-2c5f514a5c75": {
+        "name": "Neon Dripless",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "27275d80-1738-444e-923e-226229f53246": {
+        "name": "Privateer",
+        "description": "Found in the revolutionist's den.",
+        "type": "Outfit"
+    },
+    "2289bcbb-909d-455d-aacc-6f9418834441": {
+        "name": "Bloody Privateer",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "3f6c2fe5-2f1a-43d9-b6ca-0bc68d8e9759": {
+        "name": "Privateer",
+        "description": "Stealing a smuggler's wares.",
+        "type": "Outfit"
+    },
+    "8c78eea2-dc22-47d2-a8ac-bdc9963c4f33": {
+        "name": "Bloody Privateer",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "803a11b2-ba52-492c-8467-895abc16d897": {
+        "name": "Witch's Garb",
+        "description": "Found in one of Jester's chests.",
+        "type": "Outfit"
+    },
+    "1ff4f50f-ac20-424f-a6e3-18f8c0c99f71": {
+        "name": "Jester's Garb",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "0ebe45b0-fa09-4fb6-aef3-691c2a71de21": {
+        "name": "Witch's Hat",
+        "description": "Found in one of Jester's chests.",
+        "type": "Outfit"
+    },
+    "96406a3d-2246-46bc-a6b9-d052681da7d6": {
+        "name": "Giant Witch's Hat",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "8b20e389-2218-49d9-9a1e-c73fcc78a4ed": {
+        "name": "Witch's Hair",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "95dd952a-ad4d-47a3-8f87-f5c1623d2e2b": {
+        "name": "Beach Top",
+        "description": "A nice reward for a good swim!",
+        "type": "Outfit"
+    },
+    "6b46484b-3c4b-4f1f-932c-8a7e981cfc10": {
+        "name": "Light Beach Wear",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "a031acec-0dab-46e3-9145-3058b4f09e80": {
+        "name": "Beach Cap",
+        "description": "From sleeping.",
+        "type": "Outfit"
+    },
+    "08b66d68-f353-4f10-a770-57c61afb7521": {
+        "name": "Beach Cap Alpha",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "c0a20288-7c09-4d36-acdf-fb843270816b": {
+        "name": "Delinquent's Suit",
+        "description": "Mastered the optica for it!",
+        "type": "Outfit"
+    },
+    "2315f397-fe9f-46aa-995e-a828946d12bb": {
+        "name": "Jacketless Suit",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "fa363b0d-5a49-4dd8-8909-0dd3f96dd1b7": {
+        "name": "Delinquent's Do",
+        "description": "A juicy reward from a twisting nightmare.",
+        "type": "Outfit"
+    },
+    "21fc2f87-9f40-4252-9aaf-86838097733f": {
+        "name": "Maskless Cut",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "3eb7f4a9-ebcd-436f-97be-e275b642e692": {
+        "name": "Cereal Box Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "6e7d471e-5dff-48a8-8f67-9889015dd279": {
+        "name": "Paper Bag Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "503ebf6a-abe5-4111-aa2f-3ae9f80efb82": {
+        "name": "Broken Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "663bfa0d-fe7c-4615-b8f1-41b1189e83c8": {
+        "name": "Spooky Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "35a7090d-7c47-4355-9485-e71d8b2afc8d": {
+        "name": "Punk Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "16092aab-8f8f-412e-8099-8956d62596e7": {
+        "name": "Wooden Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "11374b2a-75a1-4c6f-8554-bb615a653a9b": {
+        "name": "Trashmask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "b79daf8a-0935-4809-a4fa-5b88432fd29e": {
+        "name": "Angry Trashmask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "fcac53b2-4c7b-4c4b-9b48-4c114e060d3a": {
+        "name": "Creepy Trashmask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "06958afb-4036-4701-b991-ec41e4108371": {
+        "name": "Happy Trashmask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "530ec2af-5124-4b17-b2c0-9b3cf90c1a61": {
+        "name": "Fish Demon Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "98090168-d79e-46b4-bdc0-17b8652431e8": {
+        "name": "Demon Mask",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "b2149362-2123-4789-9117-ef15e6b02fc0": {
+        "name": "Negative Visor",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "36e4dbc2-db08-4cfc-9e2c-bc17d0aeb4be": {
+        "name": "Rave Visor",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "078d22e1-5e11-4039-a91d-2e70fcef06c6": {
+        "name": "Visor",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "c43001cc-9152-466f-8d73-397fb1e71efb": {
+        "name": "Snail Helmet",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "319c1d83-ca40-4a6f-9cd0-2ff9a5044b04": {
+        "name": "Space Helmet",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "8b1e2af4-c936-4673-85d3-8f6b84bb67a6": {
+        "name": "Golden Chum Skull",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "a380e252-3d1f-4789-83d8-3241fe632dc3": {
+        "name": "Painted Chum Skull",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "f4a735a2-efb0-4d57-91af-e3c72e47ebcc": {
+        "name": "Chum Skull",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "e13d2644-7dbe-46ff-aceb-5a10a02bef29": {
+        "name": "Toy Helmet",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "622fa204-cfd6-457b-b35c-a0e938834072": {
+        "name": "Lamp Helmet",
+        "description": "Bought at the Mask Shop.",
+        "type": "Outfit"
+    },
+    "f8167cfb-fb15-47a9-8fe7-98c5f6542172": {
+        "name": "Serker Body-Gear",
+        "description": "Climbed the red forest!",
+        "type": "Outfit"
+    },
+    "03b09f03-519a-4d12-b335-69a61af2244e": {
+        "name": "Noir Body-Gear",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "b255051f-baad-492d-a2d3-49ca639960c7": {
+        "name": "Serker Head-Gear",
+        "description": "Bested the mint's factory run.",
+        "type": "Outfit"
+    },
+    "8670e826-af67-47b7-a354-23ce5ff1b349": {
+        "name": "Noir Head-Gear",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "6abd7a10-cfc2-4748-932f-e1a0b64b9edb": {
+        "name": "Undemon",
+        "description": "Boarded the ghost ship successfully.",
+        "type": "Outfit"
+    },
+    "2c0a6448-64f8-4363-8a66-c5e403f4351f": {
+        "name": "Fallen Angel",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "b4b35b8a-e990-4e56-b706-7641708f4fb5": {
+        "name": "Undemon",
+        "description": "Climbed a tower in the darkness.",
+        "type": "Outfit"
+    },
+    "fc35033a-abd1-41fb-9c87-7b2cc1281ffc": {
+        "name": "Fallen Angel",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "79df4fda-97ae-4d5d-9a0c-7b064f139624": {
+        "name": "Long Spiky Hair",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "db168bd9-8e85-4b98-9579-39f4c3b1e162": {
+        "name": "Scientista",
+        "description": "Survived a collapsing building.",
+        "type": "Outfit"
+    },
+    "b28d3611-eccd-414f-a9a7-920b71bb75ab": {
+        "name": "Suit and Tie",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "70faf238-56c8-4f32-a870-b66b9d17480b": {
+        "name": "Scientista",
+        "description": "Won a drone race among scientists.",
+        "type": "Outfit"
+    },
+    "26728f11-9083-4055-813d-e9be1dacef44": {
+        "name": "Ponytail",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "80187146-8c6c-4539-902b-767fa907e75d": {
+        "name": "Kowai Kawaii",
+        "description": "Flew through some lava hoops.",
+        "type": "Outfit"
+    },
+    "84632968-c1ba-4a24-8924-53e2521b8dd4": {
+        "name": "Kowai Kei",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "7e684605-b55b-4ab6-943c-6663cb2739b8": {
+        "name": "Kowai Kawaii",
+        "description": "Found amongst survivors of a village.",
+        "type": "Outfit"
+    },
+    "32b59917-8a04-418a-acf7-6ced081e4291": {
+        "name": "Kowai Kei",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "db5699ec-de6a-42ed-9cc5-70ae836d0005": {
+        "name": "Frosty Explorer",
+        "description": "Walked on top of a rolling iceball.",
+        "type": "Outfit"
+    },
+    "994ac5f6-7da6-438b-8874-3c39cd8238c2": {
+        "name": "Frosty Sweater",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "26f8e275-851e-4f48-9e1c-41b2dd7b0ec2": {
+        "name": "Frosty Explorer",
+        "description": "A fitting reward atop a glacier.",
+        "type": "Outfit"
+    },
+    "7ac76d94-2708-410e-9989-7f475fbfcddb": {
+        "name": "Bear Ears",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "cc7583db-249a-48b0-98d8-2fff1a5acfe8": {
+        "name": "Rainy Getup",
+        "description": "Breached the moat for it!",
+        "type": "Outfit"
+    },
+    "bd1c260c-d852-4a71-8ae6-2cc63ce363f5": {
+        "name": "Red Getup",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "d4151b41-ea23-4c20-9b68-2bcf1d7c00f2": {
+        "name": "Rainy Getup",
+        "description": "Found atop a creature.",
+        "type": "Outfit"
+    },
+    "4e9a56a0-3955-46f2-be12-7756cdfd081d": {
+        "name": "Runa's Jacket",
+        "description": "Given to you by Runa.",
+        "type": "Outfit"
+    },
+    "45af9fdf-c72a-4a80-b118-0ee021aae442": {
+        "name": "Wet Hair",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "2401aad5-d918-4bc6-9a7c-831866e81e0e": {
+        "name": "Escaped Barbarian",
+        "description": "Caught the messenger mouse!",
+        "type": "Outfit"
+    },
+    "336bdd17-d416-454b-8876-9e5bdecf951c": {
+        "name": "Bald Barbarian",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "715dbbd1-c055-4250-8831-b9c68d765e4b": {
+        "name": "Escaped Barbarian",
+        "description": "Barbaric champion among the dead.",
+        "type": "Outfit"
+    },
+    "5ac57940-639a-4a9a-8fef-a7cff1f56ab1": {
+        "name": "Weightless Barbarian",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "2f8efa2f-08fc-467e-9958-913396f895da": {
+        "name": "Gamer Shirt",
+        "description": "A plain shirt, check the shop for cool prints!",
+        "type": "Outfit"
+    },
+    "318adfe0-81b7-4106-a900-6b5f328adf1b": {
+        "name": "Aggro Crab Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "3424cce8-4c3f-4d1b-9eb5-4d3c25ea728f": {
+        "name": "Demon Turf Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "aa559cf0-437b-4cfa-88e1-fd3460c7f854": {
+        "name": "Billie Bust Up Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "0ae57d84-0065-482f-9dcb-5fe857e44949": {
+        "name": "Crosscode Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "0cf41f9c-c145-470d-acbc-e35faa54d517": {
+        "name": "GearGrit Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "90f2078e-6c6e-4e65-a7f1-d0d5f0d32596": {
+        "name": "Grapple Dog Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "743b79c3-b0a6-4beb-8f67-190a8023f461": {
+        "name": "Skellboy Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "cf8376da-1592-4b6e-93fb-5911cc0a66b3": {
+        "name": "Slime-san Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "0d1aa9fe-03a6-4896-899d-8b8e5ecf0058": {
+        "name": "Tako Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "30bb59b6-4d40-4e96-ac27-b3fd4d646473": {
+        "name": "Unbeatable Shirt",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "264c4191-5814-426a-8723-baf9229e85f3": {
+        "name": "Gamer Headband",
+        "description": "A plain hairband, check the shop for cool prints!",
+        "type": "Outfit"
+    },
+    "2b6de596-81ce-4461-a118-fbb413bbd903": {
+        "name": "Aggro Crab Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "ad94dc95-5154-4a7e-af7b-35e1780ac587": {
+        "name": "Demon Turf Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "1be75086-c333-4900-8ca3-c522698684ae": {
+        "name": "Billie Bust Up Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "26843fed-51b6-48e1-b681-2805df9e3495": {
+        "name": "Crosscode Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "5086ba51-216b-4444-85dd-2595808c17a2": {
+        "name": "GearGrit Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "95dc6ddb-3e69-44eb-beed-3821028913f4": {
+        "name": "Grapple Dog Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "3dd72d8f-b8cc-4d88-9cb1-39e3dcc61702": {
+        "name": "Skellboy Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "7ed33637-14ec-445c-9100-a5f4d0c1e351": {
+        "name": "Slime-san Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "50c54f53-a10f-472d-8bb8-e72d2655edca": {
+        "name": "Tako Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "36497a64-e67d-4617-bac3-7ee8c84f45f7": {
+        "name": "Unbeatable Headband",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "da186cab-3c79-4340-b8b4-cdb285186e79": {
+        "name": "Baby Kappernian Suit",
+        "description": "A reward for babies.",
+        "type": "Outfit"
+    },
+    "ebb7e707-c511-4c19-99aa-1d55f38f2e3a": {
+        "name": "Shiverbeaks Kappernian",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "670856cc-796d-42ca-94eb-3b254a7f5d44": {
+        "name": "Thuintir Kappernian",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "f2380cf3-2d35-450e-8b66-863f2f4d8390": {
+        "name": "Baby Kappernian Suit",
+        "description": "Does this count as a reward?!",
+        "type": "Outfit"
+    },
+    "30097bec-19db-4483-9a44-f25ec6f5c7eb": {
+        "name": "Baby Kappernian Suit",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "662b3c70-d3c0-43a9-9427-52c05ea7a68e": {
+        "name": "Thuintir Kappernian",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "196b8972-6107-4594-b7f1-6328542a875f": {
+        "name": "Beakless",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "e0634c65-ae50-4988-be27-2055cddb0c84": {
+        "name": "Raven Wrestler",
+        "description": "Like brother, like sister.",
+        "type": "Outfit"
+    },
+    "b81e7799-1628-474d-bbf5-bca7dbaf2829": {
+        "name": "Neon Wrestler",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "5aacc57e-fecb-4a1c-9f89-56dd2588c969": {
+        "name": "Raven Tips",
+        "description": "A familiar reward.",
+        "type": "Outfit"
+    },
+    "df65c9e8-ea66-4f4a-bb34-a4e8e69794dc": {
+        "name": "Neon Tips",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "3ee83d0b-0e99-4309-81bc-e4504bb7b6ac": {
+        "name": "Vindra's Gale",
+        "description": "Beat Mint's challenge amongst the clouds.",
+        "type": "Outfit"
+    },
+    "3393924c-aff2-4519-8100-4e5e3abddcde": {
+        "name": "Flame Goddess",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "0db3c2ac-980d-4c6a-a88c-dbedf7dee9f5": {
+        "name": "Vindra's Gale",
+        "description": "Found riding subways in the sky.",
+        "type": "Outfit"
+    },
+    "bb5f3738-adf0-44e7-b36c-cd11f17c95f6": {
+        "name": "Fiery Haircut",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "1debf6f2-4423-4569-848c-73aec1231e14": {
+        "name": "Royal Guard",
+        "description": "A barrel of fun to get!",
+        "type": "Outfit"
+    },
+    "9da14250-bb10-4865-8338-fc8272fe7705": {
+        "name": "Capeless Armor",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "72c42b90-5ff6-4a6b-ae7d-71aef67bb536": {
+        "name": "Royal Guard",
+        "description": "A haunted reward.",
+        "type": "Outfit"
+    },
+    "6e36ea2f-ce4a-483b-a811-d8414701b727": {
+        "name": "Helmetless Cut",
+        "description": "Modified by Luci.",
+        "type": "Outfit"
+    },
+    "7c4f3914-e70d-48bb-b4ba-fc8d8c007894": {
+        "name": "Luci's Glasses",
+        "description": "A sweet reward for buying out her shop.",
+        "type": "Outfit"
+    },
+    "38ea4abc-ff55-437e-b23a-94f2bbc3c990": {
+        "name": "Luci's Glasses Down",
+        "description": "A sweet reward for buying out her shop.",
+        "type": "Outfit"
+    },
+    "e8f85d56-5295-4296-b213-1e9970915b47": {
+        "name": "Midgi's Barrel",
+        "description": "A bizarre reward for buying out his shop.",
+        "type": "Outfit"
+    },
+    "f018ce6b-5e9b-4de3-955b-519f293188a5": {
+        "name": "DK's Magic Face",
+        "description": "A cool reward for buying out his shop.",
+        "type": "Outfit"
+    },
+    "642593d8-1bb5-4189-9090-0cfa06f3dc68": {
+        "name": "DK's Magic Body",
+        "description": "A cool reward for buying out his shop.",
+        "type": "Outfit"
+    },
+    "11ac5032-f123-4571-b4ec-a33e583a4665": {
+        "name": "Pendant",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "a2f088e4-3de1-4e45-8127-1b17111bdcc9": {
+        "name": "Health Minus",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "1196d995-0ebe-43ca-b667-91912777b737": {
+        "name": "Health Plus",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "2cae2789-297c-445e-bc51-ec104a6e8aaf": {
+        "name": "Health Regen",
+        "description": "Amongst a gearserker.",
+        "type": "Talisman"
+    },
+    "ff6051c9-85dc-4bf9-989b-d8e4c666441d": {
+        "name": "Guardian Fairy",
+        "description": "Bested Mint's nasty snowstorm.",
+        "type": "Talisman"
+    },
+    "06942373-f678-473b-8681-d0681871e68f": {
+        "name": "Paraglider",
+        "description": "The gift of flight from a mint!",
+        "type": "Talisman"
+    },
+    "63b2b4fe-2bf9-40ce-8d40-21e6273d5578": {
+        "name": "White Bubble",
+        "description": "A bubbly reward atop an ancient tower.",
+        "type": "Talisman"
+    },
+    "ba2b3a6a-4e84-428f-99e3-8b5543c7865a": {
+        "name": "Blue Bubble",
+        "description": "Bested Mint's ruined challenge.",
+        "type": "Talisman"
+    },
+    "4c7225f6-a6d5-44c8-a3d0-3c313d427fbb": {
+        "name": "Infernal Engine",
+        "description": "Beating some soldiers for it.",
+        "type": "Talisman"
+    },
+    "ff7217ba-4888-4e73-b792-10d54b95bcd3": {
+        "name": "Icy Steps",
+        "description": "Traveled across the sky for this talisman!",
+        "type": "Talisman"
+    },
+    "baf8a77f-200a-452c-9dca-03ddead239b5": {
+        "name": "Flutter Steps",
+        "description": "Survived Mint's hookshot trials.",
+        "type": "Talisman"
+    },
+    "a44b58c2-3df6-4c63-85e3-4990d78a31fd": {
+        "name": "Sticky Feet",
+        "description": "A fine reward below the depths.",
+        "type": "Talisman"
+    },
+    "3440f97b-c603-4f59-97be-be0330c9e124": {
+        "name": "Sticky Fingers",
+        "description": "Found atop a crane.",
+        "type": "Talisman"
+    },
+    "07dbd5e0-2f18-4243-b74a-e6ed840012ab": {
+        "name": "Item Arrow Tracker",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "b551f71a-dbb4-47a6-a367-7a4ae3494514": {
+        "name": "Eyetem Collector",
+        "description": "A sweet reward for beating Mint's challenge.",
+        "type": "Talisman"
+    },
+    "8a7248d3-4a6c-4e9d-a06a-e3a976a8c8cc": {
+        "name": "Time Out",
+        "description": "Got to the frozen impact crater!",
+        "type": "Talisman"
+    },
+    "0ba0db7a-ab8e-44dc-8dd6-5c56f1a7d85d": {
+        "name": "Flying Drone",
+        "description": "A well earned reward from Mr. Mint!",
+        "type": "Talisman"
+    },
+    "d2a7826f-24df-451b-b421-059c177a76e4": {
+        "name": "Airpoint",
+        "description": "A fine reward for saving all Kappernian babies.",
+        "type": "Talisman"
+    },
+    "b0634db4-2c0e-46e2-91b5-39ff65859da0": {
+        "name": "Flash Photography",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "fde08a85-5d7c-4781-9bfa-97428693f0cb": {
+        "name": "Rollerskates",
+        "description": "Steamed up atop the Kappernian Springs.",
+        "type": "Talisman"
+    },
+    "78aa3db7-a62a-4acd-b213-c62f5900d085": {
+        "name": "\"Friendly\" Face",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "52901f20-0ba1-4c21-af05-42719e23fe9f": {
+        "name": "Big Head Mode",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "ffce5776-cc8f-46ae-9fa3-4bed653268a9": {
+        "name": "Original Depth",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "b033db40-8259-4448-be72-bd25e13da53f": {
+        "name": "Pixel Art",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "aad17215-8179-47d3-8643-453d81d371a6": {
+        "name": "No Jump",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "2dd2c6bc-3b40-4a6c-b89d-538790bf58ee": {
+        "name": "Timed Triple",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "6aa21478-5804-48fa-a18c-6ed99622af25": {
+        "name": "Triple Twist",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "8a68323d-2910-4bb6-84e0-dcb30b527c1a": {
+        "name": "Relaxed Triple Jump",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "75f64bec-1fed-4250-b698-5ac7375e2697": {
+        "name": "Growing Triple Jump",
+        "description": "Found amongst ruins deep in a cave.",
+        "type": "Talisman"
+    },
+    "5253040d-4006-41ee-a3c3-d8002f65803d": {
+        "name": "Crouch Jump",
+        "description": "Beaten Mint's void inside the mines.",
+        "type": "Talisman"
+    },
+    "ddba437f-e131-46d9-bcfc-ec1d9ed2707a": {
+        "name": "Twirl Jump",
+        "description": "Bested a tunnel and climbed a volcano.",
+        "type": "Talisman"
+    },
+    "318d1cb6-d12f-4d25-bb26-81f774db1f77": {
+        "name": "Lightweight Bouncer",
+        "description": "Beyond a portal atop some cliffs!",
+        "type": "Talisman"
+    },
+    "18ca7078-1f40-46f8-871b-3ff80be55a6f": {
+        "name": "Light Feather",
+        "description": "Amongst the rubble in a gravity bubble.",
+        "type": "Talisman"
+    },
+    "78faf300-9ac6-4fe1-825f-0754be6deeaa": {
+        "name": "Mega Dribble",
+        "description": "This baby had a talisman in its beak.",
+        "type": "Talisman"
+    },
+    "92402eff-1e32-4609-8933-0c87a70b1b4b": {
+        "name": "Ninja Skid",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "24a46372-b12e-428d-8b1e-ac13478d46d6": {
+        "name": "Speedy Demon",
+        "description": "A fitting reward for going down a slide.",
+        "type": "Talisman"
+    },
+    "2ac917d4-3d30-4e82-8a6b-30e6bb4da2bd": {
+        "name": "Ground Booster",
+        "description": "A Midgi and DK Special.",
+        "type": "Talisman"
+    },
+    "6af19221-0931-4bcc-b416-63aaa7c460e0": {
+        "name": "Wall Runner",
+        "description": "Reunited a mother with her baby at Runa's.",
+        "type": "Talisman"
+    },
+    "9697324c-3bf1-4fb9-b7d3-04b3276fa370": {
+        "name": "Boost Reflect",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "6cd18dd2-42ed-4c7f-bc11-d9ecd07a6671": {
+        "name": "Boost Punch",
+        "description": "Phew! Escaped the hole of death.",
+        "type": "Talisman"
+    },
+    "c0959e35-e547-40bd-af1f-10f3b8fb4f48": {
+        "name": "Shoulder Tackle",
+        "description": "A sweet reward found in a sweet village.",
+        "type": "Talisman"
+    },
+    "0f653d33-e14d-487f-8fb3-8f894dba7f60": {
+        "name": "Boost Attack Lift",
+        "description": "No one droned harder for this!",
+        "type": "Talisman"
+    },
+    "47129810-6b62-4aaf-b73d-b222096a2f8c": {
+        "name": "Ricochet Beast",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "63503175-df3a-42af-b7fc-44a2b20179f3": {
+        "name": "Bat Flutter",
+        "description": "Above the clouds a race to a talisman.",
+        "type": "Talisman"
+    },
+    "d6ebd6d6-0007-4ce5-ba89-3852bcdb5d4d": {
+        "name": "Bat Glide",
+        "description": "Rode on an invisible platform.",
+        "type": "Talisman"
+    },
+    "cf6c025b-de8a-4309-b6a8-6498af66e18b": {
+        "name": "Bat Booster",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "82b9dd40-d73d-46c1-aa30-92b60ce70e5d": {
+        "name": "Bat Dasher",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "f9255c20-1f4c-4920-8e14-e251d786d9e4": {
+        "name": "Bat Dive Arrow",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "453a355d-3a6b-450a-b152-7de0843782ca": {
+        "name": "Cannonbat",
+        "description": "Showed off your ice skating skills!",
+        "type": "Talisman"
+    },
+    "5a36643b-79c6-43ec-8abc-1ef6a1309f27": {
+        "name": "Cannonball Leap",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "7f68da36-22bb-4bdf-bad3-a4c6eccaf6b2": {
+        "name": "Cannonball Momentum",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "91010b76-f541-421c-8726-61071a8039c3": {
+        "name": "Super Bat Jump",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "5313c248-bf3d-4410-b26e-791acfee2f44": {
+        "name": "B-Ball",
+        "description": "Survived Mint's invisible trial.",
+        "type": "Talisman"
+    },
+    "7583223d-834c-465b-84b3-0c2e50cbb37e": {
+        "name": "Bat Optica",
+        "description": "Cleared the coasts!",
+        "type": "Talisman"
+    },
+    "9ca9ad76-615a-4654-8565-4fd92034bdd0": {
+        "name": "Spin Updraft",
+        "description": "Did a ring race amongst radio towers.",
+        "type": "Talisman"
+    },
+    "d4cf2cc8-b268-4188-bb59-a8133a50d7f4": {
+        "name": "Longer Spin",
+        "description": "A Midgi and DK Special.",
+        "type": "Talisman"
+    },
+    "1792b3a9-4b42-40d5-af6e-6760299a17f5": {
+        "name": "Spin Drill Leap",
+        "description": "Bested Jester's ring race.",
+        "type": "Talisman"
+    },
+    "21cbd499-a5d0-414d-8580-f499b316202f": {
+        "name": "Spin Drill Helicopter",
+        "description": "A talisman at the top of a sunken neighborhood.",
+        "type": "Talisman"
+    },
+    "e735f417-d115-4c4e-8982-62fd5e8b4834": {
+        "name": "Spin Whirlwind",
+        "description": "Ran across walls for this bad boy.",
+        "type": "Talisman"
+    },
+    "0ca65e34-a765-4688-a824-ae1a506214d8": {
+        "name": "Spincopter",
+        "description": "A Midgi and DK Special.",
+        "type": "Talisman"
+    },
+    "6c757911-c7f0-43e2-89bb-a128f5deaa1f": {
+        "name": "Spinning Spin",
+        "description": "???",
+        "type": "Talisman"
+    },
+    "bab806c7-7d0e-4b04-af17-80d00d06eb35": {
+        "name": "Spin Optica",
+        "description": "Tackled the tundras!",
+        "type": "Talisman"
+    },
+    "b76ddefd-ef3a-492b-af27-38990dbaab8f": {
+        "name": "Snake Boating",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "64f49093-017a-4ae0-8b34-3d6f0f5a4915": {
+        "name": "Snake Drifting",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "303b557a-528e-4df0-928c-9255bc59d15d": {
+        "name": "Snake Lob",
+        "description": "Found at the bottom of a hollow tower.",
+        "type": "Talisman"
+    },
+    "250a56da-bbf0-4834-8735-f2e167b80ca1": {
+        "name": "Snake Double Jump",
+        "description": "Beat a race around the burg walls.",
+        "type": "Talisman"
+    },
+    "8bb7ad0d-bbe0-431d-b5e6-4f88d7fe08f4": {
+        "name": "Snake Hop",
+        "description": "A Midgi and DK special.",
+        "type": "Talisman"
+    },
+    "cbab10be-4455-445c-9d66-eb24d16391d2": {
+        "name": "Snake Climber",
+        "description": "Atop a mushroom climbs a snake!",
+        "type": "Talisman"
+    },
+    "fca43057-a493-443c-9676-18132d23af64": {
+        "name": "Snake Optica",
+        "description": "Tackled the tundras!",
+        "type": "Talisman"
+    },
+    "c07ae6d0-7fa5-4486-a987-f0877945c697": {
+        "name": "Talisman Slot",
+        "description": "Jester vanquished and your magic is all the stronger!",
+        "type": "Slot"
+    },
+    "3a38dd60-83e9-4810-b4a4-a33a11df3d6f": {
+        "name": "Talisman Slot",
+        "description": "Tridentarius defeated, and her tech gives you a boost!",
+        "type": "Slot"
+    },
+    "f8d84de9-b4fd-4946-ac04-d2f518a8e789": {
+        "name": "Talisman Slot",
+        "description": "Roc bested, sibling dominance proven!",
+        "type": "Slot"
+    }
+}
