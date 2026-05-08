@@ -10,12 +10,12 @@ Items marked with * are considered lower priority.
 - Wall Climb/Jump
 
 ### Ability Unlocks :
-- [ ] Bat Jump
-- [ ] Spin Form
-- [ ] Snake Form + Boost
-- [ ] Human Form Boost
-- [ ] Bat Form Boost¹
-- [ ] Spin Form Boost¹
+- [x] Bat Jump
+- [x] Spin Form
+- [x] Snake Form + Boost
+- [x] Human Form Boost
+- [x] Bat Form Boost¹
+- [x] Spin Form Boost¹
 - [ ] Item Finder Arrow
 - [ ] Place checkpoint
 
@@ -25,7 +25,7 @@ Items marked with * are considered lower priority.
 
 ### Logic Changes:
 - [ ] Remove tutorial
-- [ ] Buff Beebs swimming speed to half of snake form with boost
+- [x] Buff Beebs swimming speed
 - [ ] Start on random island in random region*²
 - [ ] Beebs starts with 1 HP slot
 - [ ] Start with random outfit, head and hair color

@@ -48,7 +48,15 @@
 
 	<ItemGroup>
 		<Compile Include="Core.cs" />
-		<Compile Include="Helpers\PlaceholderHelper.cs" />
-		<Compile Include="Patches\PlaceholderPatch.cs" />
+		<Compile Include="Helpers\BatHelper.cs" />
+		<Compile Include="Helpers\BoostHelper.cs" />
+		<Compile Include="Helpers\CustomItem.cs" />
+		<Compile Include="Helpers\SnakeHelper.cs" />
+		<Compile Include="Helpers\SpinHelper.cs" />
+		<Compile Include="Patches\Abilities\BatPatch.cs" />
+		<Compile Include="Patches\Abilities\BoostPatch.cs" />
+		<Compile Include="Patches\Abilities\SnakePatch.cs" />
+		<Compile Include="Patches\Abilities\SpinPatch.cs" />
+		<Compile Include="Patches\WaterPatch.cs" />
 	</ItemGroup>
 </Project>
