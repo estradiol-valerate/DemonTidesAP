@@ -5,7 +5,7 @@ using Il2CppFabraz.CharacterController;
 namespace DemonTidesAP.Patches.Abilities;
 
 [HarmonyPatch(typeof(BeebzCharacterController), "TrySpin")]
-public static class TrySpinPatch
+public static class SpinPatch
 {
     static bool Prefix(ref bool __result)
     {
