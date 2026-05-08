@@ -1,7 +1,6 @@
 using DemonTidesAP.Helpers;
 using HarmonyLib;
 using Il2CppFabraz.CharacterController;
-using MelonLoader;
 
 namespace DemonTidesAP.Patches.Abilities;
 
