@@ -1,7 +1,9 @@
 ﻿using DemonTidesAP.Helpers;
 using Il2CppFabraz;
+using Il2CppFabraz.Input;
 using Il2CppFabraz.SaveData;
 using MelonLoader;
+using UnityEngine;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -10,7 +12,7 @@ namespace DemonTidesAP
 {
     public class Core : MelonMod
     {
-        public static bool Debug = false;
+        public static bool Debug = true;
         public static bool Connected;
         public override void OnInitializeMelon()
         {
@@ -25,6 +27,8 @@ namespace DemonTidesAP
                 BoostHelper.BoostUnlocked = false;
                 BoostHelper.BatBoostUnlocked = false;
                 BoostHelper.SpinBoostUnlocked = false;
+                CheckpointHelper.CanPlaceCheckpoint = false;
+                ItemArrowHelper.CanUseArrow = false;
             }
         }
 
@@ -47,6 +51,10 @@ namespace DemonTidesAP
                 //string uuid = $"ap_{Guid.NewGuid().ToString()}";
                 //ItemData item = CustomItem.Create("example item", uuid, "Archipelago Item");
             }
+        }
+
+        public override void OnLateUpdate()
+        {
         }
     }
 }

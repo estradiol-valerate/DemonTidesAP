@@ -16,7 +16,7 @@ Items marked with * are considered lower priority.
 - [x] Human Form Boost
 - [x] Bat Form Boost¹
 - [x] Spin Form Boost¹
-- [ ] Item Finder Arrow
+- [x] Item Finder Arrow
 - [ ] Place checkpoint
 
 ### Items:
