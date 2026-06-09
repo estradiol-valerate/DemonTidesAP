@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
+		<PlatformTarget>x64</PlatformTarget>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
 		<RootNamespace>DemonTidesAP</RootNamespace>
@@ -60,6 +61,8 @@
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
+		<Compile Include="Patches\IDPairsPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
+		<Compile Include="Patches\InjectRandoPatch.cs" />
 	</ItemGroup>
 </Project>
