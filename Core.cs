@@ -5,7 +5,7 @@ using Il2CppFabraz.SaveData;
 using MelonLoader;
 using UnityEngine;
 
-[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, personguy", null)]
+[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
 
 namespace DemonTidesAP
