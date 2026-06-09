@@ -29,6 +29,9 @@ namespace DemonTidesAP
                 BoostHelper.SpinBoostUnlocked = false;
                 CheckpointHelper.CanPlaceCheckpoint = false;
                 ItemArrowHelper.CanUseArrow = false;
+
+                
+
             }
         }
 
