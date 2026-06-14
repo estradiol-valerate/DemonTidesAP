@@ -5,7 +5,7 @@ using MelonLoader;
 using UnityEngine;
 
 
-namespace DemonTidesAP.Patches;
+namespace DemonTidesAP.Patches.Tests;
 
 [HarmonyPatch(typeof(SaveDataManager), "SetCurrentSaveDataSlot")]
 public static class IDPairsPatch
