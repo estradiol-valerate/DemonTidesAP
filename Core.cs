@@ -1,7 +1,9 @@
 ﻿using DemonTidesAP.Helpers;
 using Il2CppFabraz;
+using Il2CppFabraz.CharacterController;
 using Il2CppFabraz.Input;
 using Il2CppFabraz.SaveData;
+using Il2CppFabraz.UI;
 using MelonLoader;
 using UnityEngine;
 
@@ -14,6 +16,10 @@ namespace DemonTidesAP
     {
         public static bool Debug = true;
         public static bool Connected;
+        public static NotificationUI notificationUI;
+        public static NotificationQueue notificationQueue;
+        public int notif_accumulator = 1;
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized.");
@@ -59,5 +65,17 @@ namespace DemonTidesAP
         public override void OnLateUpdate()
         {
         }
+
+        public override void OnUpdate()
+        {
+            if (Input.GetKeyDown(KeyCode.J) && Debug)
+            {
+                MelonLogger.Msg("testing AP notification");
+                notificationQueue.PushNotification($"<item name {notif_accumulator}>", $"<slot name {notif_accumulator}>");
+                notif_accumulator++;
+            }
+        }
+
+        
     }
 }

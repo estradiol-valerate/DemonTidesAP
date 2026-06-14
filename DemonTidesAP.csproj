@@ -34,11 +34,20 @@
 	  <Reference Include="MelonLoader">
 	    <HintPath>lib\MelonLoader.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Unity.Addressables">
+	    <HintPath>lib\Unity.Addressables.dll</HintPath>
+	  </Reference>
 	  <Reference Include="UnityEngine">
 	    <HintPath>lib\UnityEngine.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine.CoreModule">
 	    <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.InputLegacyModule">
+	    <HintPath>lib\UnityEngine.InputLegacyModule.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.InputModule">
+		<HintPath>lib\UnityEngine.InputModule.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 
@@ -54,6 +63,7 @@
 		<Compile Include="Helpers\CheckpointHelper.cs" />
 		<Compile Include="Helpers\CustomItem.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
+		<Compile Include="Helpers\NotificationQueue.cs" />
 		<Compile Include="Helpers\SnakeHelper.cs" />
 		<Compile Include="Helpers\SpinHelper.cs" />
 		<Compile Include="Patches\Abilities\BatPatch.cs" />
@@ -61,8 +71,9 @@
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
-		<Compile Include="Patches\IDPairsPatch.cs" />
+		<Compile Include="Patches\locator\NotificationUILocator.cs" />
+		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
-		<Compile Include="Patches\InjectRandoPatch.cs" />
+		<Compile Include="Patches\Tests\InjectRandoPatch.cs" />
 	</ItemGroup>
 </Project>
