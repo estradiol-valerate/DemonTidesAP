@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PlatformTarget>x64</PlatformTarget>
@@ -37,8 +37,14 @@
 	  <Reference Include="Unity.Addressables">
 	    <HintPath>lib\Unity.Addressables.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Unity.ResourceManager">
+	    <HintPath>lib\Unity.ResourceManager.dll</HintPath>
+	  </Reference>
 	  <Reference Include="UnityEngine">
 	    <HintPath>lib\UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.AnimationModule">
+	    <HintPath>lib\UnityEngine.AnimationModule.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine.CoreModule">
 	    <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
@@ -70,6 +76,8 @@
 		<Compile Include="Patches\Abilities\BoostPatch.cs" />
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
+		<Compile Include="Patches\locator\RewardMenuLocator.cs" />
+		<Compile Include="Patches\SaveDataGetRandomizedItem.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
 		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
