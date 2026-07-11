@@ -9,7 +9,7 @@ using MelonLoader;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static Il2CppFabraz.CharacterController.BeebzCharacterController;
-using System.Text.Json;
+using System.Collections.Generic;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -20,12 +20,21 @@ namespace DemonTidesAP
     {
         public static bool Debug = true;
         public static bool Connected;
+
         public static NotificationUI notificationUI;
         public static NotificationQueue notificationQueue;
-        public static RewardMenu rewardMenu;
         public int notif_accumulator = 1;
+
+        public static RewardMenu rewardMenu;
         static public Action action;
-        public static AssetReferenceGameObject asset;
+
+        public static AssetReferenceGameObject ChestAsset;
+
+        public static ItemData DisplayItem;
+        public static ModelHelper DefaultModel;
+        public static ModelHelper APModel;
+
+        public static bool CanUpdate = false; 
         //public static Chest chest;
 
         public override void OnInitializeMelon()
@@ -43,16 +52,11 @@ namespace DemonTidesAP
                 BoostHelper.SpinBoostUnlocked = false;
                 CheckpointHelper.CanPlaceCheckpoint = false;
                 ItemArrowHelper.CanUseArrow = false;
-
-                
-
             }
 
             action = new Action(RewardUIDefaultClear);
-            asset = new AssetReferenceGameObject("Assets/Interactables/Interactions/Chest/RewardChest/Chest with Reward - Ruins.prefab");
-            if (asset.Asset == null) asset.LoadAsset(); // could be async loaded but this is fine for now
-
-            //chest = ((GameObject)asset.Asset).GetComponent<Chest>();
+            ChestAsset = new AssetReferenceGameObject("Assets/Interactables/Interactions/Chest/RewardChest/Chest with Reward - Ruins.prefab");
+            if (ChestAsset.Asset == null) ChestAsset.LoadAsset(); // could be async loaded but this is fine for now
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
@@ -82,6 +86,10 @@ namespace DemonTidesAP
 
         public override void OnUpdate()
         {
+            if (!CanUpdate)
+            {
+                return;
+            }
             GameObject beebz = GameObject.Find("Beebz (Gameplay)");
             BeebzCharacterController controller = beebz.GetComponent<BeebzCharacterController>();
             if (Input.GetKeyDown(KeyCode.J) && Debug)
@@ -129,7 +137,7 @@ namespace DemonTidesAP
 
         public static void GetItem(string id)
         {
-            Chest chest = ((GameObject)asset.Asset).GetComponent<Chest>();
+            Chest chest = ((GameObject)ChestAsset.Asset).GetComponent<Chest>();
             PlatformManager platformManager = PlatformManager.Instance;
             ItemData itemData = platformManager.GetItem(id);
 
@@ -140,5 +148,13 @@ namespace DemonTidesAP
             }
         }
 
+        public static void SetDisplayItem(ModelHelper model, string header_text, string footer_text)
+        {
+            model.SetDisplayModel();
+            DisplayItem.flavorContent = header_text;
+            DisplayItem.locationDescriptionContent = footer_text;
+        }
+
     }
 }
+
