@@ -11,7 +11,7 @@ namespace DemonTidesAP.Patches.Tests;
 [HarmonyPatch(typeof(TitleMenu), "StartGame")]
 public static class InjectRandoPatch
 {
-    private static bool injectiontest = false;
+    private static bool injectiontest = true;
 
     static void Postfix(ref TitleMenu __instance)
     {
@@ -21,8 +21,9 @@ public static class InjectRandoPatch
         {
             foreach(string key in savedata.randomizerDictionary._keys)
             {
-                savedata.randomizerDictionary[key] = "11ac5032-f123-4571-b4ec-a33e583a4665";
+                savedata.randomizerDictionary[key] = "0d90281d-ff36-4c50-8fb5-40c672da5916";
             }
+            //savedata.randomizerLuciUnlocks["Lokitana"].list[0] = "1";
         }
     }
     

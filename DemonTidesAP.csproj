@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<PlatformTarget>x64</PlatformTarget>
@@ -37,8 +37,14 @@
 	  <Reference Include="Unity.Addressables">
 	    <HintPath>lib\Unity.Addressables.dll</HintPath>
 	  </Reference>
+	  <Reference Include="Unity.ResourceManager">
+	    <HintPath>lib\Unity.ResourceManager.dll</HintPath>
+	  </Reference>
 	  <Reference Include="UnityEngine">
 	    <HintPath>lib\UnityEngine.dll</HintPath>
+	  </Reference>
+	  <Reference Include="UnityEngine.AnimationModule">
+	    <HintPath>lib\UnityEngine.AnimationModule.dll</HintPath>
 	  </Reference>
 	  <Reference Include="UnityEngine.CoreModule">
 	    <HintPath>lib\UnityEngine.CoreModule.dll</HintPath>
@@ -63,6 +69,7 @@
 		<Compile Include="Helpers\CheckpointHelper.cs" />
 		<Compile Include="Helpers\CustomItem.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
+		<Compile Include="Helpers\ModelHelper.cs" />
 		<Compile Include="Helpers\NotificationQueue.cs" />
 		<Compile Include="Helpers\SnakeHelper.cs" />
 		<Compile Include="Helpers\SpinHelper.cs" />
@@ -70,10 +77,20 @@
 		<Compile Include="Patches\Abilities\BoostPatch.cs" />
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
+		<Compile Include="Patches\ChestOpenPatch.cs" />
+		<Compile Include="Patches\locator\DisplayItemLocator.cs" />
+		<Compile Include="Patches\locator\OnBeebzCharacterControllerAwake.cs" />
+		<Compile Include="Patches\locator\RewardMenuLocator.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
+		<Compile Include="Patches\RewardMenuExitPatch.cs" />
+		<Compile Include="Patches\RewardMenuSetPatch.cs" />
 		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
 		<Compile Include="Patches\Tests\InjectRandoPatch.cs" />
 	</ItemGroup>
+
+	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
+	  <Exec Command="copy &quot;%25USERPROFILE%25\source\repos\DemonTidesAP\bin\Debug\net6.0\DemonTidesAP.dll&quot; &quot;C:\Program Files (x86)\Steam\steamapps\common\Demon Tides\Mods&quot;&#xD;&#xA;&#xD;&#xA;start steam://rungameid/APP_ID/2585890" />
+	</Target>
 </Project>
