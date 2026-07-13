@@ -7,13 +7,14 @@ using UnityEngine;
 using Il2CppRotaryHeart.Lib.SerializableDictionary;
 using Il2CppFabraz;
 
-namespace DemonTidesAP.Patches;
+namespace DemonTidesAP.Patches.CheckDetection;
 
-[HarmonyPatch(typeof(Chest), "Open")]
-public static class ChestOpenPatch
+[HarmonyPatch(typeof(Challenge), "CompleteChallenge")]
+public static class ChallengesCompleteChallengePatch
 {
     static void Postfix(Chest __instance)
     {
-        Core.SetDisplayItem(Core.APModel, "You Found: Heart Piece", "For: Trev");
+        Core.SetDisplayItem(Core.APModel, "You Found: Dream Nail", "For: Maya");
     }
 }
+

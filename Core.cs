@@ -6,10 +6,11 @@ using Il2CppFabraz.MovingPlatforms;
 using Il2CppFabraz.SaveData;
 using Il2CppFabraz.UI;
 using MelonLoader;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 using static Il2CppFabraz.CharacterController.BeebzCharacterController;
-using System.Collections.Generic;
+using static MelonLoader.MelonLogger;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -28,14 +29,14 @@ namespace DemonTidesAP
         public static RewardMenu rewardMenu;
         static public Action action;
 
-        public static AssetReferenceGameObject ChestAsset;
-
         public static ItemData DisplayItem;
+        public static string DisplayItemID = "0d90281d-ff36-4c50-8fb5-40c672da5916";
         public static ModelHelper DefaultModel;
         public static ModelHelper APModel;
 
-        public static bool CanUpdate = false; 
-        //public static Chest chest;
+        public static bool CanUpdate = false;
+
+        public static SaveDataManager saveDataManager;
 
         public override void OnInitializeMelon()
         {
@@ -55,8 +56,6 @@ namespace DemonTidesAP
             }
 
             action = new Action(RewardUIDefaultClear);
-            ChestAsset = new AssetReferenceGameObject("Assets/Interactables/Interactions/Chest/RewardChest/Chest with Reward - Ruins.prefab");
-            if (ChestAsset.Asset == null) ChestAsset.LoadAsset(); // could be async loaded but this is fine for now
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
@@ -86,11 +85,12 @@ namespace DemonTidesAP
 
         public override void OnUpdate()
         {
-            if (!CanUpdate)
-            {
-                return;
-            }
+            if (!CanUpdate) return;
+            
+
             GameObject beebz = GameObject.Find("Beebz (Gameplay)");
+            if (beebz == null) return;
+
             BeebzCharacterController controller = beebz.GetComponent<BeebzCharacterController>();
             if (Input.GetKeyDown(KeyCode.J) && Debug)
             {
@@ -118,9 +118,17 @@ namespace DemonTidesAP
 
             if (Input.GetKeyDown(KeyCode.B) && Debug)
             {
-                GetItem("b8182536-acf0-456c-b61b-4c2d8c825968");
-                GetItem("c0a20288-7c09-4d36-acdf-fb843270816b");
-                GetItem("2cae2789-297c-445e-bc51-ec104a6e8aaf");
+                LoggerInstance.Msg("Giving Items.");
+                foreach (ItemData item in PlatformManager.Instance.allItems)
+                {
+                    if (item.nameContent == "Golden Gear")
+                    {
+                        GiveItem(item.internalId);
+                    }
+                }
+                GiveItem("b0eb2e54-23e8-4079-a89a-c01d03238487");
+                GiveItem("0ebe45b0-fa09-4fb6-aef3-691c2a71de21");
+
             }
         }
 
@@ -135,17 +143,18 @@ namespace DemonTidesAP
             collectables.goldenGearRewardAnimator.SetBool("allCollected", false);
         }
 
-        public static void GetItem(string id)
+        public static void GiveItem(string id)
         {
-            Chest chest = ((GameObject)ChestAsset.Asset).GetComponent<Chest>();
+            SaveData CurrentSave = saveDataManager.CurrentSaveData;
+            CurrentSave.randomizerDictionary[id] = "1";
+
             PlatformManager platformManager = PlatformManager.Instance;
             ItemData itemData = platformManager.GetItem(id);
+            UnlockItem unlock = new UnlockItem();
+            unlock.data = itemData;
+            unlock.Unlock();
 
-            if (itemData != null)
-            {
-                chest.unlockItem.data = itemData; // default is Level_Ruins_3_RadioTowers_GoldenGear1, can be changed to any other ItemData and seems to work fine
-                chest.unlockItem.Unlock(); // gives the ItemData without using the reward menu
-            }
+            CurrentSave.randomizerDictionary[id] = DisplayItemID;
         }
 
         public static void SetDisplayItem(ModelHelper model, string header_text, string footer_text)
