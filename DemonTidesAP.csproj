@@ -77,17 +77,22 @@
 		<Compile Include="Patches\Abilities\BoostPatch.cs" />
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
-		<Compile Include="Patches\ChestOpenPatch.cs" />
+		<Compile Include="Patches\CheckDetection\JesterBossFightFinishPatch.cs" />
+		<Compile Include="Patches\CheckDetection\RocBossFightFinishPatch.cs" />
+		<Compile Include="Patches\CheckDetection\TridentariusBossFightFinishPatch.cs" />
+		<Compile Include="Patches\CheckDetection\ChallengesCompleteChallengePatch.cs" />
+		<Compile Include="Patches\CheckDetection\ChestOpenPatch.cs" />
 		<Compile Include="Patches\locator\DisplayItemLocator.cs" />
 		<Compile Include="Patches\locator\OnBeebzCharacterControllerAwake.cs" />
 		<Compile Include="Patches\locator\RewardMenuLocator.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
+		<Compile Include="Patches\locator\SaveDataManagerLocator.cs" />
 		<Compile Include="Patches\RewardMenuExitPatch.cs" />
 		<Compile Include="Patches\RewardMenuSetPatch.cs" />
 		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
-		<Compile Include="Patches\Tests\InjectRandoPatch.cs" />
+		<Compile Include="Patches\InjectRandoPatch.cs" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
