@@ -10,7 +10,7 @@ using Il2CppFabraz.AI;
 
 namespace DemonTidesAP.Patches.CheckDetection;
 
-[HarmonyPatch(typeof(TridentariusBossFightController), "CompleteFight")]
+[HarmonyPatch(typeof(TridentariusBossFightController), "FinishFight")]
 public static class TridentariusBossFightFinishPatch
 {
     static void Postfix(TridentariusBossFightController __instance)

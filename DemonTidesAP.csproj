@@ -55,6 +55,9 @@
 	  <Reference Include="UnityEngine.InputModule">
 		<HintPath>lib\UnityEngine.InputModule.dll</HintPath>
 	  </Reference>
+	  <Reference Include="UnityEngine.UI">
+	    <HintPath>lib\UnityEngine.UI.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<PropertyGroup>
@@ -67,32 +70,36 @@
 		<Compile Include="Helpers\BatHelper.cs" />
 		<Compile Include="Helpers\BoostHelper.cs" />
 		<Compile Include="Helpers\CheckpointHelper.cs" />
-		<Compile Include="Helpers\CustomItem.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
 		<Compile Include="Helpers\ModelHelper.cs" />
 		<Compile Include="Helpers\NotificationQueue.cs" />
 		<Compile Include="Helpers\SnakeHelper.cs" />
 		<Compile Include="Helpers\SpinHelper.cs" />
-		<Compile Include="Patches\Abilities\BatPatch.cs" />
 		<Compile Include="Patches\Abilities\BoostPatch.cs" />
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
+		<Compile Include="Patches\CheckDetection\RagnarBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\JesterBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\RocBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\TridentariusBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\ChallengesCompleteChallengePatch.cs" />
 		<Compile Include="Patches\CheckDetection\ChestOpenPatch.cs" />
 		<Compile Include="Patches\locator\DisplayItemLocator.cs" />
-		<Compile Include="Patches\locator\OnBeebzCharacterControllerAwake.cs" />
+		<Compile Include="Patches\locator\OnBeebzCharacterControllerLocator.cs" />
 		<Compile Include="Patches\locator\RewardMenuLocator.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
 		<Compile Include="Patches\locator\SaveDataManagerLocator.cs" />
+		<Compile Include="Patches\locator\TalismanInformationSectionUILocator.cs" />
 		<Compile Include="Patches\RewardMenuExitPatch.cs" />
 		<Compile Include="Patches\RewardMenuSetPatch.cs" />
 		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
 		<Compile Include="Patches\InjectRandoPatch.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">
