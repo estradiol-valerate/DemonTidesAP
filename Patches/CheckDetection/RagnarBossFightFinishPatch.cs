@@ -10,12 +10,11 @@ using Il2CppFabraz.AI;
 
 namespace DemonTidesAP.Patches.CheckDetection;
 
-[HarmonyPatch(typeof(JesterBossFightController), "FinishFight")]
-public static class JesterBossFightFinishPatch
+[HarmonyPatch(typeof(RagnarBossFightController), "FinishFight")]
+public static class RagnarBossFightFinishPatch
 {
-    static void Postfix(JesterBossFightController __instance)
+    static void Postfix(RagnarBossFightController __instance)
     {
-        string header_text = "You Found: Broom";
-        Core.SetDisplayItem(Core.APModel, header_text, "For: Jester");
+        MelonLogger.Msg($"Check ID: oh shit you beat the game, far out");
     }
 }

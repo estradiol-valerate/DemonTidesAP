@@ -12,7 +12,7 @@ namespace DemonTidesAP.Patches.CheckDetection;
 [HarmonyPatch(typeof(Challenge), "CompleteChallenge")]
 public static class ChallengesCompleteChallengePatch
 {
-    static void Postfix(Chest __instance)
+    static void Postfix(Challenge __instance)
     {
         Core.SetDisplayItem(Core.APModel, "You Found: Dream Nail", "For: Maya");
     }

@@ -27,7 +27,6 @@ namespace DemonTidesAP
         public int notif_accumulator = 1;
 
         public static RewardMenu rewardMenu;
-        static public Action action;
 
         public static ItemData DisplayItem;
         public static string DisplayItemID = "0d90281d-ff36-4c50-8fb5-40c672da5916";
@@ -38,6 +37,10 @@ namespace DemonTidesAP
 
         public static SaveDataManager saveDataManager;
 
+        public static TalismanInformationSectionUI HexUISection;
+
+        public static BeebzCharacterController BeebzCharacterController;
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized.");
@@ -45,17 +48,16 @@ namespace DemonTidesAP
             {
                 // This is for debug purposes, it'll eventually only be true when connected to archipelago.
                 Connected = true;
-                BatHelper.BatUnlocked = false;
-                SpinHelper.SpinUnlocked = false;
-                SnakeHelper.SnakeUnlocked = false;
-                BoostHelper.BoostUnlocked = false;
-                BoostHelper.BatBoostUnlocked = false;
-                BoostHelper.SpinBoostUnlocked = false;
-                CheckpointHelper.CanPlaceCheckpoint = false;
-                ItemArrowHelper.CanUseArrow = false;
+                OpticaHelper.OpticaUnlocked = true;
+                BatHelper.BatUnlocked = true;
+                SpinHelper.SpinUnlocked = true;
+                SnakeHelper.SnakeUnlocked = true;
+                BoostHelper.BoostUnlocked = true;
+                BoostHelper.BatBoostUnlocked = true;
+                BoostHelper.SpinBoostUnlocked = true;
+                CheckpointHelper.CanPlaceCheckpoint = true;
+                ItemArrowHelper.CanUseArrow = true;
             }
-
-            action = new Action(RewardUIDefaultClear);
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
@@ -85,13 +87,8 @@ namespace DemonTidesAP
 
         public override void OnUpdate()
         {
-            if (!CanUpdate) return;
-            
+            if (!CanUpdate || BeebzCharacterController == null) return;
 
-            GameObject beebz = GameObject.Find("Beebz (Gameplay)");
-            if (beebz == null) return;
-
-            BeebzCharacterController controller = beebz.GetComponent<BeebzCharacterController>();
             if (Input.GetKeyDown(KeyCode.J) && Debug)
             {
                 MelonLogger.Msg("testing AP notification");
@@ -102,6 +99,7 @@ namespace DemonTidesAP
             if (Input.GetKeyDown(KeyCode.K) && Debug)
             {
                 BatHelper.BatUnlocked = !BatHelper.BatUnlocked;
+                BeebzCharacterController.jumping.maxBatJumps = 1 - BeebzCharacterController.jumping.maxBatJumps;
                 SpinHelper.SpinUnlocked = !SpinHelper.SpinUnlocked;
                 SnakeHelper.SnakeUnlocked = !SnakeHelper.SnakeUnlocked;
                 BoostHelper.BoostUnlocked = !BoostHelper.BoostUnlocked;
@@ -113,7 +111,7 @@ namespace DemonTidesAP
 
             if (Input.GetKeyDown(KeyCode.L) && Debug) 
             {
-                controller.AddVelocity(new Vector3(0, 100, 0));
+                BeebzCharacterController.AddVelocity(new Vector3(0, 100, 0));
             }
 
             if (Input.GetKeyDown(KeyCode.B) && Debug)
@@ -130,17 +128,24 @@ namespace DemonTidesAP
                 GiveItem("0ebe45b0-fa09-4fb6-aef3-691c2a71de21");
 
             }
-        }
 
-        static void RewardUIDefaultClear()
-        {
-            GameObject beebz = GameObject.Find("Beebz (Gameplay)");
-            BeebzCharacterController controller = beebz.GetComponent<BeebzCharacterController>();
-            BeebzCharacterController.Collectables collectables = controller.collectables;
-            TimeManager.timeScale = 1;
-            collectables.allGearBitsCollected = false;
-            collectables.goldenGearRewardSequenceActive = false;
-            collectables.goldenGearRewardAnimator.SetBool("allCollected", false);
+            if (Input.GetKeyDown(KeyCode.N) && Debug) 
+            {
+                foreach(string key in HexUISection.entries._keys)
+                {
+                    TalismanInformationUI hex = HexUISection.entries[key];
+                    if (hex.fadedIn)
+                    {
+                        hex.FadeOut();
+                    } else
+                    {
+                        hex.FadeIn();
+                    }
+                    hex.fadedIn = !hex.fadedIn;
+                }
+
+                
+            }
         }
 
         public static void GiveItem(string id)
