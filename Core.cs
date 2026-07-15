@@ -48,7 +48,6 @@ namespace DemonTidesAP
             {
                 // This is for debug purposes, it'll eventually only be true when connected to archipelago.
                 Connected = true;
-                OpticaHelper.OpticaUnlocked = true;
                 BatHelper.BatUnlocked = true;
                 SpinHelper.SpinUnlocked = true;
                 SnakeHelper.SnakeUnlocked = true;
