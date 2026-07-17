@@ -78,6 +78,7 @@
 		<Compile Include="Patches\Abilities\BoostPatch.cs" />
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
+		<Compile Include="Patches\ChallengeTriggerPatch.cs" />
 		<Compile Include="Patches\CheckDetection\RagnarBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\JesterBossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\RocBossFightFinishPatch.cs" />
