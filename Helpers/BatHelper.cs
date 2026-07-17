@@ -2,11 +2,11 @@ namespace DemonTidesAP.Helpers;
 
 public class BatHelper
 {
-    private static bool batUnlocked;
+    private static int batJumps;
     
-    public static bool BatUnlocked
+    public static int BatJumps
     {
-        get => batUnlocked;
-        set => batUnlocked = value;
+        get => batJumps;
+        set => batJumps = value;
     }
 }

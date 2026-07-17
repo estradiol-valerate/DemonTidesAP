@@ -41,6 +41,8 @@ namespace DemonTidesAP
 
         public static BeebzCharacterController BeebzCharacterController;
 
+        public static bool debug_unlocked = true;
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized.");
@@ -48,15 +50,14 @@ namespace DemonTidesAP
             {
                 // This is for debug purposes, it'll eventually only be true when connected to archipelago.
                 Connected = true;
-                OpticaHelper.OpticaUnlocked = true;
-                BatHelper.BatUnlocked = true;
-                SpinHelper.SpinUnlocked = true;
-                SnakeHelper.SnakeUnlocked = true;
-                BoostHelper.BoostUnlocked = true;
-                BoostHelper.BatBoostUnlocked = true;
-                BoostHelper.SpinBoostUnlocked = true;
-                CheckpointHelper.CanPlaceCheckpoint = true;
-                ItemArrowHelper.CanUseArrow = true;
+                BatHelper.BatJumps = debug_unlocked ? 1 : 0;
+                SpinHelper.SpinUnlocked = debug_unlocked;
+                SnakeHelper.SnakeUnlocked = debug_unlocked;
+                BoostHelper.BoostUnlocked = debug_unlocked;
+                BoostHelper.BatBoostUnlocked = debug_unlocked;
+                BoostHelper.SpinBoostUnlocked = debug_unlocked;
+                CheckpointHelper.CanPlaceCheckpoint = debug_unlocked;
+                ItemArrowHelper.CanUseArrow = debug_unlocked;
             }
         }
 
@@ -98,15 +99,16 @@ namespace DemonTidesAP
 
             if (Input.GetKeyDown(KeyCode.K) && Debug)
             {
-                BatHelper.BatUnlocked = !BatHelper.BatUnlocked;
-                BeebzCharacterController.jumping.maxBatJumps = 1 - BeebzCharacterController.jumping.maxBatJumps;
-                SpinHelper.SpinUnlocked = !SpinHelper.SpinUnlocked;
-                SnakeHelper.SnakeUnlocked = !SnakeHelper.SnakeUnlocked;
-                BoostHelper.BoostUnlocked = !BoostHelper.BoostUnlocked;
-                BoostHelper.BatBoostUnlocked = !BoostHelper.BatBoostUnlocked;
-                BoostHelper.SpinBoostUnlocked = !BoostHelper.SpinBoostUnlocked;
-                CheckpointHelper.CanPlaceCheckpoint = !CheckpointHelper.CanPlaceCheckpoint;
-                ItemArrowHelper.CanUseArrow = !ItemArrowHelper.CanUseArrow;
+                debug_unlocked = !debug_unlocked;
+                BatHelper.BatJumps = debug_unlocked ? 1 : 0;
+                BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                SpinHelper.SpinUnlocked = debug_unlocked;
+                SnakeHelper.SnakeUnlocked = debug_unlocked;
+                BoostHelper.BoostUnlocked = debug_unlocked;
+                BoostHelper.BatBoostUnlocked = debug_unlocked;
+                BoostHelper.SpinBoostUnlocked = debug_unlocked;
+                CheckpointHelper.CanPlaceCheckpoint = debug_unlocked;
+                ItemArrowHelper.CanUseArrow = debug_unlocked;
             }
 
             if (Input.GetKeyDown(KeyCode.L) && Debug) 
@@ -126,8 +128,31 @@ namespace DemonTidesAP
                 }
                 GiveItem("b0eb2e54-23e8-4079-a89a-c01d03238487");
                 GiveItem("0ebe45b0-fa09-4fb6-aef3-691c2a71de21");
-
             }
+
+            if (Input.GetKeyDown(KeyCode.Z) && Debug)
+            {
+                BatHelper.BatJumps = 1 - BatHelper.BatJumps;
+                BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+            }
+
+            if (Input.GetKeyDown(KeyCode.X) && Debug)
+            {
+                SpinHelper.SpinUnlocked = !SpinHelper.SpinUnlocked;
+            }
+
+            if (Input.GetKeyDown(KeyCode.C) && Debug)
+            {
+                SnakeHelper.SnakeUnlocked = !SnakeHelper.SnakeUnlocked;
+            }
+
+            if (Input.GetKeyDown(KeyCode.V) && Debug)
+            {
+                BoostHelper.BoostUnlocked = !BoostHelper.BoostUnlocked;
+                BoostHelper.BatBoostUnlocked = !BoostHelper.BatBoostUnlocked;
+                BoostHelper.SpinBoostUnlocked = !BoostHelper.SpinBoostUnlocked;
+            }
+
 
             if (Input.GetKeyDown(KeyCode.N) && Debug) 
             {
