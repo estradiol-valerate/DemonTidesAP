@@ -11,7 +11,7 @@ public static class OnBeebzCharacterControllerLocator
 {
     static void Postfix(BeebzCharacterController __instance)
     {
-        __instance.jumping.maxBatJumps = BatHelper.BatUnlocked ? 1 : 0;
+        __instance.jumping.maxBatJumps = BatHelper.BatJumps;
         Core.BeebzCharacterController = __instance;
         Core.CanUpdate = true;
     }
