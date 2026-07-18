@@ -71,6 +71,7 @@
 		<Compile Include="Helpers\BoostHelper.cs" />
 		<Compile Include="Helpers\CheckpointHelper.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
+		<Compile Include="Helpers\LocationsIDHelper.cs" />
 		<Compile Include="Helpers\ModelHelper.cs" />
 		<Compile Include="Helpers\NotificationQueue.cs" />
 		<Compile Include="Helpers\SnakeHelper.cs" />

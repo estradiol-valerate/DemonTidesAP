@@ -1,20 +1,28 @@
-﻿using DemonTidesAP.Helpers;
+﻿using Archipelago.MultiClient.Net.Models;
+using DemonTidesAP.Helpers;
 using HarmonyLib;
-using Il2CppFabraz.SaveData;
-using Il2CppFabraz.UI;
-using MelonLoader;
-using UnityEngine;
-using Il2CppRotaryHeart.Lib.SerializableDictionary;
 using Il2CppFabraz;
 using Il2CppFabraz.AI;
+using Il2CppFabraz.SaveData;
+using Il2CppFabraz.UI;
+using Il2CppRotaryHeart.Lib.SerializableDictionary;
+using MelonLoader;
+using UnityEngine;
 
 namespace DemonTidesAP.Patches.CheckDetection;
 
 [HarmonyPatch(typeof(RagnarBossFightController), "FinishFight")]
 public static class RagnarBossFightFinishPatch
 {
+    public static string check_name = "Ragnar";
+
     static void Postfix(RagnarBossFightController __instance)
     {
-        MelonLogger.Msg($"Check ID: oh shit you beat the game, far out");
+        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
+        if (id == -1) return;
+
+        Core.APReportCollectedLocation(id);
+        ScoutedItemInfo iteminfo = Core.ScoutedItems[Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name)];
+        Core.SetDisplayItemFromAPItem(iteminfo);
     }
 }

@@ -1,21 +1,28 @@
-﻿using DemonTidesAP.Helpers;
+﻿using Archipelago.MultiClient.Net.Models;
+using DemonTidesAP.Helpers;
 using HarmonyLib;
-using Il2CppFabraz.SaveData;
-using Il2CppFabraz.UI;
-using MelonLoader;
-using UnityEngine;
-using Il2CppRotaryHeart.Lib.SerializableDictionary;
 using Il2CppFabraz;
 using Il2CppFabraz.AI;
+using Il2CppFabraz.SaveData;
+using Il2CppFabraz.UI;
+using Il2CppRotaryHeart.Lib.SerializableDictionary;
+using MelonLoader;
+using UnityEngine;
 
 namespace DemonTidesAP.Patches.CheckDetection;
 
 [HarmonyPatch(typeof(RocBossFightController), "FinishFight")]
 public static class RocBossFightFinishPatch
 {
+    public static string check_name = "Roc";
+
     static void Postfix(RocBossFightController __instance)
     {
-        string header_text = "You Found: Broom";
-        Core.SetDisplayItem(Core.APModel, header_text, "For: Roc");
+        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
+        if (id == -1) return;
+
+        Core.APReportCollectedLocation(id);
+        ScoutedItemInfo iteminfo = Core.ScoutedItems[Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name)];
+        Core.SetDisplayItemFromAPItem(iteminfo);
     }
 }
