@@ -296,8 +296,39 @@ namespace DemonTidesAP
             if (iteminfo.Player.Name == Core.PlayerName)
             {
                 ItemData item = PlatformManager.Instance.GetItem(iteminfo.ItemName);
-                ModelHelper model = new ModelHelper(item);
-                Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
+                if (item != null) 
+                {
+                    ModelHelper model = new ModelHelper(item);
+                    Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
+                } else
+                {
+                    switch (iteminfo.ItemName) 
+                    {
+                        case var _ when BatHelper.name == iteminfo.ItemName:
+                            BatHelper.BatJumps = 1;
+                            BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                            break;
+                        case var _ when BoostHelper.name == iteminfo.ItemName:
+                            BoostHelper.BatBoostUnlocked = true;
+                            BoostHelper.BoostUnlocked = true;
+                            BoostHelper.SpinBoostUnlocked = true;
+                            break;
+                        case var _ when CheckpointHelper.name == iteminfo.ItemName:
+                            CheckpointHelper.CanPlaceCheckpoint = true;
+                            break;
+                        case var _ when ItemArrowHelper.name == iteminfo.ItemName:
+                            ItemArrowHelper.CanUseArrow = true;
+                            break;
+                        case var _ when SnakeHelper.name == iteminfo.ItemName:
+                            SnakeHelper.SnakeUnlocked = true;
+                            break;
+                        case var _ when SpinHelper.name == iteminfo.ItemName:
+                            SpinHelper.SpinUnlocked = true;
+                            break;
+
+                    }
+                }
+                
             }
             else
             {

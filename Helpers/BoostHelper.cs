@@ -5,6 +5,7 @@ public class BoostHelper
     private static bool boostUnlocked;
     private static bool batBoostUnlocked;
     private static bool spinBoostUnlocked;
+    public static string name = "boost";
     
     public static bool BoostUnlocked
     {
