@@ -55,6 +55,8 @@ namespace DemonTidesAP
         public static string GameName = "Demon Tides";
         public static string PlayerName;
         public static Dictionary<long, ScoutedItemInfo> ScoutedItems;
+        public static List<string> GearsShown;
+        public static List<string> GearsCollected;
 
         public override void OnInitializeMelon()
         {
@@ -197,10 +199,53 @@ namespace DemonTidesAP
             CurrentSave.randomizerDictionary[id] = "1";
 
             PlatformManager platformManager = PlatformManager.Instance;
-            ItemData itemData = platformManager.GetItem(id);
             UnlockItem unlock = new UnlockItem();
-            unlock.data = itemData;
-            unlock.Unlock();
+
+            ItemData itemData = platformManager.GetItem(id);
+            if (itemData != null)
+            {
+                unlock.data = itemData;
+                unlock.Unlock();
+            } else
+            {
+                string item_name = id;// thin this case the "item id" is actually it's name which is why itemData is null
+                switch (item_name)
+                {
+                    case var _ when BatHelper.name == item_name:
+                        BatHelper.BatJumps = 1;
+                        BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                        break;
+                    case var _ when BoostHelper.name == item_name:
+                        BoostHelper.BatBoostUnlocked = true;
+                        BoostHelper.BoostUnlocked = true;
+                        BoostHelper.SpinBoostUnlocked = true;
+                        break;
+                    case var _ when CheckpointHelper.name == item_name:
+                        CheckpointHelper.CanPlaceCheckpoint = true;
+                        break;
+                    case var _ when ItemArrowHelper.name == item_name:
+                        ItemArrowHelper.CanUseArrow = true;
+                        break;
+                    case var _ when SnakeHelper.name == item_name:
+                        SnakeHelper.SnakeUnlocked = true;
+                        break;
+                    case var _ when SpinHelper.name == item_name:
+                        SpinHelper.SpinUnlocked = true;
+                        break;
+                    case var _ when "goldengear" == item_name:
+                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
+                        {
+                            if (item_data.nameContent == "Golden Gear" && !GearsCollected.Contains(item_data.internalId))
+                            {
+                                GearsCollected.Add(item_data.internalId);
+                                unlock.data = item_data;
+                                unlock.Unlock();
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
 
             CurrentSave.randomizerDictionary[id] = DisplayItemID;
         }
@@ -305,27 +350,35 @@ namespace DemonTidesAP
                     switch (iteminfo.ItemName) 
                     {
                         case var _ when BatHelper.name == iteminfo.ItemName:
-                            BatHelper.BatJumps = 1;
-                            BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                            Core.SetDisplayItem(APModel, "You Found The Bat Form", "Now Get Jumpin.");
                             break;
                         case var _ when BoostHelper.name == iteminfo.ItemName:
-                            BoostHelper.BatBoostUnlocked = true;
-                            BoostHelper.BoostUnlocked = true;
-                            BoostHelper.SpinBoostUnlocked = true;
+                            Core.SetDisplayItem(APModel, "You Found Boosting", "Go Kick Some Ass.");
                             break;
                         case var _ when CheckpointHelper.name == iteminfo.ItemName:
-                            CheckpointHelper.CanPlaceCheckpoint = true;
+                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPiont?"); ;
                             break;
                         case var _ when ItemArrowHelper.name == iteminfo.ItemName:
-                            ItemArrowHelper.CanUseArrow = true;
+                            Core.SetDisplayItem(APModel, "You Found The Item Arrow", "Meh.");
                             break;
                         case var _ when SnakeHelper.name == iteminfo.ItemName:
-                            SnakeHelper.SnakeUnlocked = true;
+                            Core.SetDisplayItem(APModel, "You Found The Snake Form", "Rolling Around At The Speed of Sound");
                             break;
                         case var _ when SpinHelper.name == iteminfo.ItemName:
-                            SpinHelper.SpinUnlocked = true;
+                            Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
                             break;
-
+                        case var _ when "goldengear" == iteminfo.ItemName:
+                            foreach(ItemData item_data in PlatformManager.Instance.allItems)
+                            {
+                                if(item_data.nameContent == "Golden Gear" && !GearsShown.Contains(item_data.internalId))
+                                {
+                                    GearsShown.Add(item_data.internalId);
+                                    ModelHelper gearmodel = new ModelHelper(item_data);
+                                    Core.SetDisplayItem(gearmodel, item_data.flavorContent, item_data.locationDescriptionContent);
+                                    break;
+                                }
+                            }
+                            break;
                     }
                 }
                 
