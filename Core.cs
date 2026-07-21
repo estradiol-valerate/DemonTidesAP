@@ -1,4 +1,8 @@
-﻿using DemonTidesAP.Helpers;
+﻿using Archipelago.MultiClient.Net;
+using Archipelago.MultiClient.Net.Enums;
+using Archipelago.MultiClient.Net.Models;
+using Archipelago.MultiClient.Net.Helpers;
+using DemonTidesAP.Helpers;
 using Il2CppFabraz;
 using Il2CppFabraz.CharacterController;
 using Il2CppFabraz.Input;
@@ -6,9 +10,12 @@ using Il2CppFabraz.MovingPlatforms;
 using Il2CppFabraz.SaveData;
 using Il2CppFabraz.UI;
 using MelonLoader;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 using static Il2CppFabraz.CharacterController.BeebzCharacterController;
 using static MelonLoader.MelonLogger;
 
@@ -43,6 +50,14 @@ namespace DemonTidesAP
 
         public static bool debug_unlocked = true;
 
+        public static ArchipelagoSession session;
+        public static Instance Logger;
+        public static string GameName = "Demon Tides";
+        public static string PlayerName;
+        public static Dictionary<long, ScoutedItemInfo> ScoutedItems;
+        public static List<string> GearsShown;
+        public static List<string> GearsCollected;
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized.");
@@ -59,11 +74,16 @@ namespace DemonTidesAP
                 CheckpointHelper.CanPlaceCheckpoint = debug_unlocked;
                 ItemArrowHelper.CanUseArrow = debug_unlocked;
             }
+            Logger = LoggerInstance;
         }
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
+            if (Debug)
+            {
+                LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
+            }
+            
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
@@ -179,10 +199,53 @@ namespace DemonTidesAP
             CurrentSave.randomizerDictionary[id] = "1";
 
             PlatformManager platformManager = PlatformManager.Instance;
-            ItemData itemData = platformManager.GetItem(id);
             UnlockItem unlock = new UnlockItem();
-            unlock.data = itemData;
-            unlock.Unlock();
+
+            ItemData itemData = platformManager.GetItem(id);
+            if (itemData != null)
+            {
+                unlock.data = itemData;
+                unlock.Unlock();
+            } else
+            {
+                string item_name = id;// thin this case the "item id" is actually it's name which is why itemData is null
+                switch (item_name)
+                {
+                    case var _ when BatHelper.name == item_name:
+                        BatHelper.BatJumps = 1;
+                        BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                        break;
+                    case var _ when BoostHelper.name == item_name:
+                        BoostHelper.BatBoostUnlocked = true;
+                        BoostHelper.BoostUnlocked = true;
+                        BoostHelper.SpinBoostUnlocked = true;
+                        break;
+                    case var _ when CheckpointHelper.name == item_name:
+                        CheckpointHelper.CanPlaceCheckpoint = true;
+                        break;
+                    case var _ when ItemArrowHelper.name == item_name:
+                        ItemArrowHelper.CanUseArrow = true;
+                        break;
+                    case var _ when SnakeHelper.name == item_name:
+                        SnakeHelper.SnakeUnlocked = true;
+                        break;
+                    case var _ when SpinHelper.name == item_name:
+                        SpinHelper.SpinUnlocked = true;
+                        break;
+                    case var _ when "goldengear" == item_name:
+                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
+                        {
+                            if (item_data.nameContent == "Golden Gear" && !GearsCollected.Contains(item_data.internalId))
+                            {
+                                GearsCollected.Add(item_data.internalId);
+                                unlock.data = item_data;
+                                unlock.Unlock();
+                                break;
+                            }
+                        }
+                        break;
+                }
+            }
 
             CurrentSave.randomizerDictionary[id] = DisplayItemID;
         }
@@ -194,6 +257,139 @@ namespace DemonTidesAP
             DisplayItem.locationDescriptionContent = footer_text;
         }
 
+        public static void OnItemReceived(ReceivedItemsHelper helper)
+        {
+            ItemInfo item = helper.PeekItem();
+
+            string recieved_text = $"You Recieved: {item.ItemDisplayName}";
+            Logger.Msg(recieved_text);
+            GiveItem(item.ItemName);
+            notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
+
+            helper.DequeueItem();
+        }
+
+        public static void APConnect(string server, string user, string pass)
+        {
+            session = ArchipelagoSessionFactory.CreateSession(server);
+            // Must go BEFORE a successful connection attempt
+            session.Items.ItemReceived += OnItemReceived;
+
+            LoginResult result;
+
+            try
+            {
+                // handle TryConnectAndLogin attempt here and save the returned object to `result`
+                result = session.TryConnectAndLogin(GameName, user, ItemsHandlingFlags.AllItems);
+            }
+            catch (Exception e)
+            {
+                result = new LoginFailure(e.GetBaseException().Message);
+            }
+
+            if (!result.Successful)
+            {
+                LoginFailure failure = (LoginFailure)result;
+                string errorMessage = $"Failed to Connect to {server} as {user}:";
+                foreach (string error in failure.Errors)
+                {
+                    errorMessage += $"\n    {error}";
+                }
+                foreach (ConnectionRefusedError error in failure.ErrorCodes)
+                {
+                    errorMessage += $"\n    {error}";
+                }
+                
+                Logger.Error(errorMessage);
+                return; // Did not connect, show the user the contents of `errorMessage`
+            }
+
+            // Successfully connected, `ArchipelagoSession` (assume statically defined as `session` from now on) can now be
+            // used to interact with the server and the returned `LoginSuccessful` contains some useful information about the
+            // initial connection (e.g. a copy of the slot data as `loginSuccess.SlotData`)
+            var loginSuccess = (LoginSuccessful)result;
+            string successMessage = $"Connected Successfully to {server} as {user}";
+            Logger.Msg(successMessage);
+            PlayerName = user;
+
+            int length = LocationsIDHelper.LocationsID.Count;
+            long[] ids = new long[length];
+            for (int i = 0; i < length; i++)
+            {
+                ids[i] = session.Locations.GetLocationIdFromName(GameName, LocationsIDHelper.LocationsID[i]);
+            }
+            MelonCoroutines.Start(ScoutLocationsInScene(ids));
+        }
+
+        public static void APReportCollectedLocation(params long[] ids)
+        {
+            session.Locations.CompleteLocationChecks(ids);
+        }
+
+        public static IEnumerator ScoutLocationsInScene(params long[] ids)
+        {
+            Task<Dictionary<long, ScoutedItemInfo>> task = session.Locations.ScoutLocationsAsync(HintCreationPolicy.None, ids);
+            yield return new WaitUntil(new Func<bool>(() => task.IsCompleted));
+            ScoutedItems = new Dictionary<long, ScoutedItemInfo>(task.Result);
+            // do stuff after retrieving scouts
+        }
+
+        public static void SetDisplayItemFromAPItem(ScoutedItemInfo iteminfo)
+        {
+            Logger.Msg($"You Found: {iteminfo.ItemDisplayName}");
+
+            if (iteminfo.Player.Name == Core.PlayerName)
+            {
+                ItemData item = PlatformManager.Instance.GetItem(iteminfo.ItemName);
+                if (item != null) 
+                {
+                    ModelHelper model = new ModelHelper(item);
+                    Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
+                } else
+                {
+                    switch (iteminfo.ItemName) 
+                    {
+                        case var _ when BatHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found The Bat Form", "Now Get Jumpin.");
+                            break;
+                        case var _ when BoostHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found Boosting", "Go Kick Some Ass.");
+                            break;
+                        case var _ when CheckpointHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPiont?"); ;
+                            break;
+                        case var _ when ItemArrowHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found The Item Arrow", "Meh.");
+                            break;
+                        case var _ when SnakeHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found The Snake Form", "Rolling Around At The Speed of Sound");
+                            break;
+                        case var _ when SpinHelper.name == iteminfo.ItemName:
+                            Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
+                            break;
+                        case var _ when "goldengear" == iteminfo.ItemName:
+                            foreach(ItemData item_data in PlatformManager.Instance.allItems)
+                            {
+                                if(item_data.nameContent == "Golden Gear" && !GearsShown.Contains(item_data.internalId))
+                                {
+                                    GearsShown.Add(item_data.internalId);
+                                    ModelHelper gearmodel = new ModelHelper(item_data);
+                                    Core.SetDisplayItem(gearmodel, item_data.flavorContent, item_data.locationDescriptionContent);
+                                    break;
+                                }
+                            }
+                            break;
+                    }
+                }
+                
+            }
+            else
+            {
+                Core.SetDisplayItem(Core.APModel, $"You Found: {iteminfo.ItemDisplayName}", $"For: {iteminfo.Player.Name}");
+            }
+        }
+
+        
     }
 }
 
