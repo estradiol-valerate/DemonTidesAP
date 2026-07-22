@@ -15,7 +15,8 @@ public static class ChallengesCompleteChallengePatch
 {
     static void Postfix(Challenge __instance)
     {
-        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, __instance.uniqueID);
+        string check_name = LocationsIDHelper.IDstoNames[__instance.uniqueID];
+        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
         if (id == -1) return;
 
         Core.APReportCollectedLocation(id);

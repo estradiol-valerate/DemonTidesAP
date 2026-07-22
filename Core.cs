@@ -55,8 +55,8 @@ namespace DemonTidesAP
         public static string GameName = "Demon Tides";
         public static string PlayerName;
         public static Dictionary<long, ScoutedItemInfo> ScoutedItems;
-        public static List<string> GearsShown;
-        public static List<string> GearsCollected;
+        public static List<string> GearShown;
+        public static List<string> GearCollected;
 
         public override void OnInitializeMelon()
         {
@@ -202,52 +202,69 @@ namespace DemonTidesAP
             UnlockItem unlock = new UnlockItem();
 
             ItemData itemData = platformManager.GetItem(id);
-            if (itemData != null)
+            unlock.data = itemData;
+            unlock.Unlock();
+
+            CurrentSave.randomizerDictionary[id] = DisplayItemID;
+        }
+
+        public static void GiveAPItem(string ItemName)
+        {
+            if (ItemIDHelper.NamestoItems.ContainsKey(ItemName))
             {
-                unlock.data = itemData;
-                unlock.Unlock();
+                GiveItem(ItemIDHelper.NamestoItems[ItemName]);
             } else
             {
-                string item_name = id;// thin this case the "item id" is actually it's name which is why itemData is null
-                switch (item_name)
+                switch (ItemName)
                 {
-                    case var _ when BatHelper.name == item_name:
+                    case var _ when BatHelper.name == ItemName:
                         BatHelper.BatJumps = 1;
                         BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
                         break;
-                    case var _ when BoostHelper.name == item_name:
+                    case var _ when BoostHelper.name == ItemName:
                         BoostHelper.BatBoostUnlocked = true;
                         BoostHelper.BoostUnlocked = true;
                         BoostHelper.SpinBoostUnlocked = true;
                         break;
-                    case var _ when CheckpointHelper.name == item_name:
+                    case var _ when CheckpointHelper.name == ItemName:
                         CheckpointHelper.CanPlaceCheckpoint = true;
                         break;
-                    case var _ when ItemArrowHelper.name == item_name:
+                    case var _ when ItemArrowHelper.name == ItemName:
                         ItemArrowHelper.CanUseArrow = true;
                         break;
-                    case var _ when SnakeHelper.name == item_name:
+                    case var _ when SnakeHelper.name == ItemName:
                         SnakeHelper.SnakeUnlocked = true;
                         break;
-                    case var _ when SpinHelper.name == item_name:
+                    case var _ when SpinHelper.name == ItemName:
                         SpinHelper.SpinUnlocked = true;
                         break;
-                    case var _ when "goldengear" == item_name:
+                    case var _ when "Golden Gear" == ItemName:
                         foreach (ItemData item_data in PlatformManager.Instance.allItems)
                         {
-                            if (item_data.nameContent == "Golden Gear" && !GearsCollected.Contains(item_data.internalId))
+                            if (item_data.nameContent == "Golden Gear" && !GearCollected.Contains(item_data.internalId))
                             {
-                                GearsCollected.Add(item_data.internalId);
-                                unlock.data = item_data;
-                                unlock.Unlock();
+                                GearCollected.Add(item_data.internalId);
+                                GiveItem(item_data.internalId);
                                 break;
                             }
                         }
                         break;
+                    case var _ when "Talisman Slot" == ItemName:
+                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
+                        {
+                            if (item_data.nameContent == "Talisman Slot" && !GearCollected.Contains(item_data.internalId))
+                            {
+                                GearCollected.Add(item_data.internalId);
+                                GiveItem(item_data.internalId);
+                                break;
+                            }
+                        }
+                        break;
+                    case var _ when "10 Eyetems" == ItemName:
+                        SaveDataManager.Instance.CurrentSaveData.CurrentEyetemCount += 10;
+                        break;
                 }
             }
-
-            CurrentSave.randomizerDictionary[id] = DisplayItemID;
         }
 
         public static void SetDisplayItem(ModelHelper model, string header_text, string footer_text)
@@ -263,7 +280,7 @@ namespace DemonTidesAP
 
             string recieved_text = $"You Recieved: {item.ItemDisplayName}";
             Logger.Msg(recieved_text);
-            GiveItem(item.ItemName);
+            GiveAPItem(item.ItemName);
             notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
 
             helper.DequeueItem();
@@ -312,13 +329,21 @@ namespace DemonTidesAP
             Logger.Msg(successMessage);
             PlayerName = user;
 
-            int length = LocationsIDHelper.LocationsID.Count;
-            long[] ids = new long[length];
-            for (int i = 0; i < length; i++)
+            foreach(ItemData item in PlatformManager.Instance.allItems)
             {
-                ids[i] = session.Locations.GetLocationIdFromName(GameName, LocationsIDHelper.LocationsID[i]);
+                if(item.nameContent == "Outfit")
+                {
+                    GiveItem(item.internalId);
+                }
             }
-            MelonCoroutines.Start(ScoutLocationsInScene(ids));
+
+            int length = LocationsIDHelper.NamestoIDs.Count;
+            List<long> ids = new List<long>();
+            foreach (string name in LocationsIDHelper.NamestoIDs.Keys)
+            {
+                ids.Add(session.Locations.GetLocationIdFromName(GameName, name));
+            }
+            MelonCoroutines.Start(ScoutLocationsInScene(ids.ToArray()));
         }
 
         public static void APReportCollectedLocation(params long[] ids)
@@ -330,8 +355,8 @@ namespace DemonTidesAP
         {
             Task<Dictionary<long, ScoutedItemInfo>> task = session.Locations.ScoutLocationsAsync(HintCreationPolicy.None, ids);
             yield return new WaitUntil(new Func<bool>(() => task.IsCompleted));
+
             ScoutedItems = new Dictionary<long, ScoutedItemInfo>(task.Result);
-            // do stuff after retrieving scouts
         }
 
         public static void SetDisplayItemFromAPItem(ScoutedItemInfo iteminfo)
@@ -370,14 +395,17 @@ namespace DemonTidesAP
                         case var _ when "goldengear" == iteminfo.ItemName:
                             foreach(ItemData item_data in PlatformManager.Instance.allItems)
                             {
-                                if(item_data.nameContent == "Golden Gear" && !GearsShown.Contains(item_data.internalId))
+                                if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
                                 {
-                                    GearsShown.Add(item_data.internalId);
+                                    GearShown.Add(item_data.internalId);
                                     ModelHelper gearmodel = new ModelHelper(item_data);
                                     Core.SetDisplayItem(gearmodel, item_data.flavorContent, item_data.locationDescriptionContent);
                                     break;
                                 }
                             }
+                            break;
+                        case var _ when "goldengear" == iteminfo.ItemName:
+                            SetDisplayItem(APModel, "You Got 10 Eyetems", "Don't Spend Them All in One Place");
                             break;
                     }
                 }

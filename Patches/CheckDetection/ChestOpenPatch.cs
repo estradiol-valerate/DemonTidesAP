@@ -15,7 +15,8 @@ public static class ChestOpenPatch
 {
     static void Postfix(Chest __instance)
     {
-        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, __instance.id.getID);
+        string check_name = LocationsIDHelper.IDstoNames[__instance.id.getID];
+        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
         if (id == -1) return;
 
         Core.APReportCollectedLocation(id);
