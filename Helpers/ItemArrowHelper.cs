@@ -3,7 +3,7 @@ namespace DemonTidesAP.Helpers;
 public class ItemArrowHelper
 {
     private static bool canUseArrow;
-    public static string name = "itemarrow";
+    public static string name = "Item Arrow";
 
     public static bool CanUseArrow
     {
