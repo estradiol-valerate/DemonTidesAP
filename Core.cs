@@ -329,14 +329,6 @@ namespace DemonTidesAP
             Logger.Msg(successMessage);
             PlayerName = user;
 
-            foreach(ItemData item in PlatformManager.Instance.allItems)
-            {
-                if(item.nameContent == "Outfit")
-                {
-                    GiveItem(item.internalId);
-                }
-            }
-
             int length = LocationsIDHelper.NamestoIDs.Count;
             List<long> ids = new List<long>();
             foreach (string name in LocationsIDHelper.NamestoIDs.Keys)
