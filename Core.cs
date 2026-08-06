@@ -18,6 +18,8 @@ using UnityEngine.AddressableAssets;
 using UnityEngine.SceneManagement;
 using static Il2CppFabraz.CharacterController.BeebzCharacterController;
 using static MelonLoader.MelonLogger;
+using UnityEngine.ResourceManagement.ResourceProviders;
+using System.Reflection;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -58,9 +60,23 @@ namespace DemonTidesAP
         public static List<string> GearShown;
         public static List<string> GearCollected;
 
+        public static AssetBundle assetBundle;
+
+        public static IEnumerator LoadAssetBundle()
+        {
+            // put the "demon_tides_ap" asset bundle file in the Mods folder next to the dll
+            string path = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "demon_tides_ap");
+            AssetBundleCreateRequest request = AssetBundle.LoadFromFileAsync(path);
+            yield return new WaitUntil(new Func<bool>(() => request.isDone));
+            assetBundle = request.assetBundle;
+        }
+
         public override void OnInitializeMelon()
         {
             LoggerInstance.Msg("Initialized.");
+
+            MelonCoroutines.Start(LoadAssetBundle());
+
             if (Debug)
             {
                 // This is for debug purposes, it'll eventually only be true when connected to archipelago.
@@ -408,8 +424,6 @@ namespace DemonTidesAP
                 Core.SetDisplayItem(Core.APModel, $"You Found: {iteminfo.ItemDisplayName}", $"For: {iteminfo.Player.Name}");
             }
         }
-
-        
     }
 }
 
