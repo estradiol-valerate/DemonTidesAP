@@ -5,21 +5,14 @@ using Archipelago.MultiClient.Net.Helpers;
 using DemonTidesAP.Helpers;
 using Il2CppFabraz;
 using Il2CppFabraz.CharacterController;
-using Il2CppFabraz.Input;
-using Il2CppFabraz.MovingPlatforms;
 using Il2CppFabraz.SaveData;
 using Il2CppFabraz.UI;
 using MelonLoader;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
-using static Il2CppFabraz.CharacterController.BeebzCharacterController;
 using static MelonLoader.MelonLogger;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using System.Reflection;
+using Harmony;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -56,11 +49,14 @@ namespace DemonTidesAP
         public static Instance Logger;
         public static string GameName = "Demon Tides";
         public static string PlayerName;
-        public static Dictionary<long, ScoutedItemInfo> ScoutedItems;
-        public static List<string> GearShown;
-        public static List<string> GearCollected;
+        public static Dictionary<long, ScoutedItemInfo> ScoutedItems = new Dictionary<long, ScoutedItemInfo>();
+        public static List<string> GearShown = new List<string>();
+        public static List<string> GearCollected = new List<string>();
 
         public static AssetBundle assetBundle;
+
+        public static bool titleMenuActive;
+        public static List<string> ItemNameQueue = new List<string>();
 
         public static IEnumerator LoadAssetBundle()
         {
@@ -124,6 +120,12 @@ namespace DemonTidesAP
 
         public override void OnUpdate()
         {
+            if (!titleMenuActive && ItemNameQueue.Count != 0)
+            {
+                GiveAPItem(ItemNameQueue[0]);
+                ItemNameQueue.RemoveAt(0);
+            }
+
             if (!CanUpdate || BeebzCharacterController == null) return;
 
             if (Input.GetKeyDown(KeyCode.J) && Debug)
@@ -292,11 +294,12 @@ namespace DemonTidesAP
 
         public static void OnItemReceived(ReceivedItemsHelper helper)
         {
+            Logger.Msg("OnItemReceived Called");
             ItemInfo item = helper.PeekItem();
 
             string recieved_text = $"You Recieved: {item.ItemDisplayName}";
             Logger.Msg(recieved_text);
-            GiveAPItem(item.ItemName);
+            ItemNameQueue.Add(item.ItemName);
             notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
 
             helper.DequeueItem();
@@ -400,7 +403,7 @@ namespace DemonTidesAP
                         case var _ when SpinHelper.name == iteminfo.ItemName:
                             Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
                             break;
-                        case var _ when "goldengear" == iteminfo.ItemName:
+                        case var _ when "Golden Gear" == iteminfo.ItemName:
                             foreach(ItemData item_data in PlatformManager.Instance.allItems)
                             {
                                 if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
@@ -412,7 +415,19 @@ namespace DemonTidesAP
                                 }
                             }
                             break;
-                        case var _ when "goldengear" == iteminfo.ItemName:
+                        case var _ when "Talisman Slot" == iteminfo.ItemName:
+                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
+                            {
+                                if (item_data.nameContent == "Talisman Slot" && !GearShown.Contains(item_data.internalId))
+                                {
+                                    GearShown.Add(item_data.internalId);
+                                    ModelHelper model = new ModelHelper(item_data);
+                                    Core.SetDisplayItem(model, item_data.flavorContent, item_data.locationDescriptionContent);
+                                    break;
+                                }
+                            }
+                            break;
+                        case var _ when "10 Eyetems" == iteminfo.ItemName:
                             SetDisplayItem(APModel, "You Got 10 Eyetems", "Don't Spend Them All in One Place");
                             break;
                     }

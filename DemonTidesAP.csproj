@@ -107,6 +107,8 @@
 		<Compile Include="Patches\RewardMenuExitPatch.cs" />
 		<Compile Include="Patches\RewardMenuSetPatch.cs" />
 		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
+		<Compile Include="Patches\locator\TittleMenuLocator.cs" />
+		<Compile Include="Patches\TitleMenuDestroyedPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
 		<Compile Include="Patches\InjectRandoPatch.cs" />
 	</ItemGroup>

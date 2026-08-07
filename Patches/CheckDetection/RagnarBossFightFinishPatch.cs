@@ -22,7 +22,7 @@ public static class RagnarBossFightFinishPatch
         if (id == -1) return;
 
         Core.APReportCollectedLocation(id);
-        ScoutedItemInfo iteminfo = Core.ScoutedItems[Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name)];
+        ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
         Core.SetDisplayItemFromAPItem(iteminfo);
     }
 }
