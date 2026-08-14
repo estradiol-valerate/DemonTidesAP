@@ -14,7 +14,7 @@ using static MelonLoader.MelonLogger;
 using System.Reflection;
 using Harmony;
 
-[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
+[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley, TRPG0", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
 
 namespace DemonTidesAP
@@ -58,6 +58,8 @@ namespace DemonTidesAP
         public static bool titleMenuActive;
         public static List<string> ItemNameQueue = new List<string>();
 
+        public static List<GearBitZone> GearBitZoneList = new List<GearBitZone>();
+
         public static IEnumerator LoadAssetBundle()
         {
             // put the "demon_tides_ap" asset bundle file in the Mods folder next to the dll
@@ -73,19 +75,17 @@ namespace DemonTidesAP
 
             MelonCoroutines.Start(LoadAssetBundle());
 
-            if (Debug)
-            {
-                // This is for debug purposes, it'll eventually only be true when connected to archipelago.
-                Connected = true;
-                BatHelper.BatJumps = debug_unlocked ? 1 : 0;
-                SpinHelper.SpinUnlocked = debug_unlocked;
-                SnakeHelper.SnakeUnlocked = debug_unlocked;
-                BoostHelper.BoostUnlocked = debug_unlocked;
-                BoostHelper.BatBoostUnlocked = debug_unlocked;
-                BoostHelper.SpinBoostUnlocked = debug_unlocked;
-                CheckpointHelper.CanPlaceCheckpoint = debug_unlocked;
-                ItemArrowHelper.CanUseArrow = debug_unlocked;
-            }
+            
+            Connected = false;
+            BatHelper.BatJumps = 1;
+            SpinHelper.SpinUnlocked = true;
+            SnakeHelper.SnakeUnlocked = true;
+            BoostHelper.BoostUnlocked = true;
+            BoostHelper.BatBoostUnlocked = true;
+            BoostHelper.SpinBoostUnlocked = true;
+            CheckpointHelper.CanPlaceCheckpoint = true;
+            ItemArrowHelper.CanUseArrow = true;
+            
             Logger = LoggerInstance;
         }
 
@@ -124,6 +124,15 @@ namespace DemonTidesAP
             {
                 GiveAPItem(ItemNameQueue[0]);
                 ItemNameQueue.RemoveAt(0);
+            }
+
+            foreach (GearBitZone bitzone in GearBitZoneList)
+            {
+                //Logger.Msg($"bitzone: {bitzone.name}");
+                if (!bitzone.gameObject.activeSelf)
+                {
+                    bitzone.gameObject.SetActive(true);
+                }
             }
 
             if (!CanUpdate || BeebzCharacterController == null) return;
@@ -268,15 +277,7 @@ namespace DemonTidesAP
                         }
                         break;
                     case var _ when "Talisman Slot" == ItemName:
-                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
-                        {
-                            if (item_data.nameContent == "Talisman Slot" && !GearCollected.Contains(item_data.internalId))
-                            {
-                                GearCollected.Add(item_data.internalId);
-                                GiveItem(item_data.internalId);
-                                break;
-                            }
-                        }
+                        if(SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5){SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++; }
                         break;
                     case var _ when "10 Eyetems" == ItemName:
                         SaveDataManager.Instance.CurrentSaveData.CurrentEyetemCount += 10;
@@ -345,8 +346,18 @@ namespace DemonTidesAP
             // initial connection (e.g. a copy of the slot data as `loginSuccess.SlotData`)
             var loginSuccess = (LoginSuccessful)result;
             string successMessage = $"Connected Successfully to {server} as {user}";
+            Connected = true;
             Logger.Msg(successMessage);
             PlayerName = user;
+
+            BatHelper.BatJumps = 0;
+            SpinHelper.SpinUnlocked = false;
+            SnakeHelper.SnakeUnlocked = false;
+            BoostHelper.BoostUnlocked = false;
+            BoostHelper.BatBoostUnlocked = false;
+            BoostHelper.SpinBoostUnlocked = false;
+            CheckpointHelper.CanPlaceCheckpoint = false;
+            ItemArrowHelper.CanUseArrow = false;
 
             int length = LocationsIDHelper.NamestoIDs.Count;
             List<long> ids = new List<long>();
@@ -376,7 +387,7 @@ namespace DemonTidesAP
 
             if (iteminfo.Player.Name == Core.PlayerName)
             {
-                ItemData item = PlatformManager.Instance.GetItem(iteminfo.ItemName);
+                ItemData item = PlatformManager.Instance.GetItem(LocationsIDHelper.NamestoIDs[iteminfo.ItemName]);
                 if (item != null) 
                 {
                     ModelHelper model = new ModelHelper(item);
