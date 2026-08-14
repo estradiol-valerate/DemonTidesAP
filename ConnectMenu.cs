@@ -24,6 +24,7 @@ namespace DemonTidesAP
         public TextMeshProUGUI passwordLabel;
         public TMP_InputField passwordInput;
         public FzButton connectButton;
+        public Action connectAction;
 
         public bool IsAnyInputFocused => addressInput.isFocused || nameInput.isFocused || passwordInput.isFocused;
         private bool previousInputFocused = false;
@@ -122,6 +123,8 @@ namespace DemonTidesAP
             button.transform.Find("Text").GetComponent<TextMeshProUGUI>().text = "Connect";
             Instance.connectButton = button.GetComponent<FzButton>();
             Instance.connectButton.GetComponent<UIFeedbackBounce>().originalPosition = new Vector3(0, -150, 0);
+
+            Instance.connectButton.onClick.AddListener((Action)Instance.Connect);
         }
 
         public void OnEnable()
@@ -168,6 +171,11 @@ namespace DemonTidesAP
                 gameObject.GetComponent<FzButton>().enabled = active;
                 gameObject.GetComponent<MenuInputListener>().enabled = active;
             }
+        }
+
+        public void Connect()
+        {
+            Core.APConnect(addressInput.text, nameInput.text, passwordInput.text);
         }
     }
 }

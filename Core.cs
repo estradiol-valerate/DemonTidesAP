@@ -5,23 +5,16 @@ using Archipelago.MultiClient.Net.Helpers;
 using DemonTidesAP.Helpers;
 using Il2CppFabraz;
 using Il2CppFabraz.CharacterController;
-using Il2CppFabraz.Input;
-using Il2CppFabraz.MovingPlatforms;
 using Il2CppFabraz.SaveData;
 using Il2CppFabraz.UI;
 using MelonLoader;
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.SceneManagement;
-using static Il2CppFabraz.CharacterController.BeebzCharacterController;
 using static MelonLoader.MelonLogger;
-using UnityEngine.ResourceManagement.ResourceProviders;
 using System.Reflection;
+using Harmony;
 
-[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley", null)]
+[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley, TRPG0", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
 
 namespace DemonTidesAP
@@ -56,11 +49,16 @@ namespace DemonTidesAP
         public static Instance Logger;
         public static string GameName = "Demon Tides";
         public static string PlayerName;
-        public static Dictionary<long, ScoutedItemInfo> ScoutedItems;
-        public static List<string> GearShown;
-        public static List<string> GearCollected;
+        public static Dictionary<long, ScoutedItemInfo> ScoutedItems = new Dictionary<long, ScoutedItemInfo>();
+        public static List<string> GearShown = new List<string>();
+        public static List<string> GearCollected = new List<string>();
 
         public static AssetBundle assetBundle;
+
+        public static bool titleMenuActive;
+        public static List<string> ItemNameQueue = new List<string>();
+
+        public static List<GearBitZone> GearBitZoneList = new List<GearBitZone>();
 
         public static IEnumerator LoadAssetBundle()
         {
@@ -77,19 +75,17 @@ namespace DemonTidesAP
 
             MelonCoroutines.Start(LoadAssetBundle());
 
-            if (Debug)
-            {
-                // This is for debug purposes, it'll eventually only be true when connected to archipelago.
-                Connected = true;
-                BatHelper.BatJumps = debug_unlocked ? 1 : 0;
-                SpinHelper.SpinUnlocked = debug_unlocked;
-                SnakeHelper.SnakeUnlocked = debug_unlocked;
-                BoostHelper.BoostUnlocked = debug_unlocked;
-                BoostHelper.BatBoostUnlocked = debug_unlocked;
-                BoostHelper.SpinBoostUnlocked = debug_unlocked;
-                CheckpointHelper.CanPlaceCheckpoint = debug_unlocked;
-                ItemArrowHelper.CanUseArrow = debug_unlocked;
-            }
+            
+            Connected = false;
+            BatHelper.BatJumps = 1;
+            SpinHelper.SpinUnlocked = true;
+            SnakeHelper.SnakeUnlocked = true;
+            BoostHelper.BoostUnlocked = true;
+            BoostHelper.BatBoostUnlocked = true;
+            BoostHelper.SpinBoostUnlocked = true;
+            CheckpointHelper.CanPlaceCheckpoint = true;
+            ItemArrowHelper.CanUseArrow = true;
+            
             Logger = LoggerInstance;
         }
 
@@ -124,6 +120,21 @@ namespace DemonTidesAP
 
         public override void OnUpdate()
         {
+            if (!titleMenuActive && ItemNameQueue.Count != 0)
+            {
+                GiveAPItem(ItemNameQueue[0]);
+                ItemNameQueue.RemoveAt(0);
+            }
+
+            foreach (GearBitZone bitzone in GearBitZoneList)
+            {
+                //Logger.Msg($"bitzone: {bitzone.name}");
+                if (!bitzone.gameObject.activeSelf)
+                {
+                    bitzone.gameObject.SetActive(true);
+                }
+            }
+
             if (!CanUpdate || BeebzCharacterController == null) return;
 
             if (Input.GetKeyDown(KeyCode.J) && Debug)
@@ -266,15 +277,7 @@ namespace DemonTidesAP
                         }
                         break;
                     case var _ when "Talisman Slot" == ItemName:
-                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
-                        {
-                            if (item_data.nameContent == "Talisman Slot" && !GearCollected.Contains(item_data.internalId))
-                            {
-                                GearCollected.Add(item_data.internalId);
-                                GiveItem(item_data.internalId);
-                                break;
-                            }
-                        }
+                        if(SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5){SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++; }
                         break;
                     case var _ when "10 Eyetems" == ItemName:
                         SaveDataManager.Instance.CurrentSaveData.CurrentEyetemCount += 10;
@@ -292,11 +295,12 @@ namespace DemonTidesAP
 
         public static void OnItemReceived(ReceivedItemsHelper helper)
         {
+            Logger.Msg("OnItemReceived Called");
             ItemInfo item = helper.PeekItem();
 
             string recieved_text = $"You Recieved: {item.ItemDisplayName}";
             Logger.Msg(recieved_text);
-            GiveAPItem(item.ItemName);
+            ItemNameQueue.Add(item.ItemName);
             notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
 
             helper.DequeueItem();
@@ -342,8 +346,18 @@ namespace DemonTidesAP
             // initial connection (e.g. a copy of the slot data as `loginSuccess.SlotData`)
             var loginSuccess = (LoginSuccessful)result;
             string successMessage = $"Connected Successfully to {server} as {user}";
+            Connected = true;
             Logger.Msg(successMessage);
             PlayerName = user;
+
+            BatHelper.BatJumps = 0;
+            SpinHelper.SpinUnlocked = false;
+            SnakeHelper.SnakeUnlocked = false;
+            BoostHelper.BoostUnlocked = false;
+            BoostHelper.BatBoostUnlocked = false;
+            BoostHelper.SpinBoostUnlocked = false;
+            CheckpointHelper.CanPlaceCheckpoint = false;
+            ItemArrowHelper.CanUseArrow = false;
 
             int length = LocationsIDHelper.NamestoIDs.Count;
             List<long> ids = new List<long>();
@@ -373,7 +387,7 @@ namespace DemonTidesAP
 
             if (iteminfo.Player.Name == Core.PlayerName)
             {
-                ItemData item = PlatformManager.Instance.GetItem(iteminfo.ItemName);
+                ItemData item = PlatformManager.Instance.GetItem(LocationsIDHelper.NamestoIDs[iteminfo.ItemName]);
                 if (item != null) 
                 {
                     ModelHelper model = new ModelHelper(item);
@@ -400,7 +414,7 @@ namespace DemonTidesAP
                         case var _ when SpinHelper.name == iteminfo.ItemName:
                             Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
                             break;
-                        case var _ when "goldengear" == iteminfo.ItemName:
+                        case var _ when "Golden Gear" == iteminfo.ItemName:
                             foreach(ItemData item_data in PlatformManager.Instance.allItems)
                             {
                                 if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
@@ -412,7 +426,19 @@ namespace DemonTidesAP
                                 }
                             }
                             break;
-                        case var _ when "goldengear" == iteminfo.ItemName:
+                        case var _ when "Talisman Slot" == iteminfo.ItemName:
+                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
+                            {
+                                if (item_data.nameContent == "Talisman Slot" && !GearShown.Contains(item_data.internalId))
+                                {
+                                    GearShown.Add(item_data.internalId);
+                                    ModelHelper model = new ModelHelper(item_data);
+                                    Core.SetDisplayItem(model, item_data.flavorContent, item_data.locationDescriptionContent);
+                                    break;
+                                }
+                            }
+                            break;
+                        case var _ when "10 Eyetems" == iteminfo.ItemName:
                             SetDisplayItem(APModel, "You Got 10 Eyetems", "Don't Spend Them All in One Place");
                             break;
                     }

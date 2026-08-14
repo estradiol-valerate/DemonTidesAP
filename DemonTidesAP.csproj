@@ -90,15 +90,14 @@
 		<Compile Include="Patches\Abilities\SnakePatch.cs" />
 		<Compile Include="Patches\Abilities\SpinPatch.cs" />
 		<Compile Include="Patches\ChallengeTriggerPatch.cs" />
-		<Compile Include="Patches\CheckDetection\RagnarBossFightFinishPatch.cs" />
-		<Compile Include="Patches\CheckDetection\JesterBossFightFinishPatch.cs" />
-		<Compile Include="Patches\CheckDetection\RocBossFightFinishPatch.cs" />
-		<Compile Include="Patches\CheckDetection\TridentariusBossFightFinishPatch.cs" />
+		<Compile Include="Patches\CheckDetection\BossFightFinishPatch.cs" />
 		<Compile Include="Patches\CheckDetection\ChallengesCompleteChallengePatch.cs" />
 		<Compile Include="Patches\CheckDetection\ChestOpenPatch.cs" />
 		<Compile Include="ConnectMenu.cs" />
 		<Compile Include="Patches\locator\DisplayItemLocator.cs" />
-		<Compile Include="Patches\locator\OnBeebzCharacterControllerLocator.cs" />
+		<Compile Include="Patches\locator\BeebzCharacterControllerLocator.cs" />
+		<Compile Include="Patches\locator\GearBitZoneDestroyed.cs" />
+		<Compile Include="Patches\locator\GearBitZoneLocator.cs" />
 		<Compile Include="Patches\locator\RewardMenuLocator.cs" />
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
@@ -106,13 +105,18 @@
 		<Compile Include="Patches\locator\TalismanInformationSectionUILocator.cs" />
 		<Compile Include="Patches\RewardMenuExitPatch.cs" />
 		<Compile Include="Patches\RewardMenuSetPatch.cs" />
-		<Compile Include="Patches\Tests\IDPairsPatch.cs" />
+		<Compile Include="Patches\locator\TittleMenuLocator.cs" />
+		<Compile Include="Patches\TitleMenuDestroyedPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
 		<Compile Include="Patches\InjectRandoPatch.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <PackageReference Include="Archipelago.MultiClient.Net" Version="6.7.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Patches\Tests\" />
 	</ItemGroup>
 
 	<Target Name="PostBuild" AfterTargets="PostBuildEvent">

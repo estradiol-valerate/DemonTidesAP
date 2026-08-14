@@ -26,7 +26,6 @@ public class NotificationQueue : MonoBehaviour
     {
         if (notificationUI.timer <= 0 && queue.Count > 0)
         {
-            MelonLogger.Msg($"Update: {notificationUI.timer}");
             (string, string) token = queue.Dequeue();
             APItemNotification(token.Item1, token.Item2);
         }
@@ -53,8 +52,8 @@ public class NotificationQueue : MonoBehaviour
     {
         NotificationUI.NotificationDisplayData disp_data = notificationUI.notificationDisplayInfos[NotificationUI.NotificationType.GhostRaceMaxTimeWarning];
 
-        disp_data.bannerText.translation.content[8].SetContent($"You Found {item_name}");
-        disp_data.bannerText.translation.content[9].SetContent($"For {slot_name}");
+        disp_data.bannerText.translation.content[8].SetContent($"{item_name}");
+        disp_data.bannerText.translation.content[9].SetContent($"{slot_name}");
 
         NotificationUI.NotificationData default_data = new NotificationUI.NotificationData();
 

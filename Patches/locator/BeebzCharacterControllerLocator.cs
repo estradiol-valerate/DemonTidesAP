@@ -7,7 +7,7 @@ using DemonTidesAP.Helpers;
 namespace DemonTidesAP.Patches.locator;
 
 [HarmonyPatch(typeof(BeebzCharacterController), "Awake")]
-public static class OnBeebzCharacterControllerLocator
+public static class BeebzCharacterControllerLocator
 {
     static void Postfix(BeebzCharacterController __instance)
     {
