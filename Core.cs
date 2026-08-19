@@ -338,6 +338,9 @@ namespace DemonTidesAP
                 }
                 
                 Logger.Error(errorMessage);
+
+                ConnectMenu.Instance?.SetResult($"Connection failed:\n<color=red>{String.Join("\n", failure.Errors)}</color>");
+
                 return; // Did not connect, show the user the contents of `errorMessage`
             }
 
@@ -349,6 +352,13 @@ namespace DemonTidesAP
             Connected = true;
             Logger.Msg(successMessage);
             PlayerName = user;
+
+            if (ConnectMenu.Instance != null)
+            {
+                ConnectMenu.Instance.SetResult("Connected successfully!");
+                ConnectMenu.Instance.SetInputsInteractable(false);
+                ConnectMenu.Instance.SetUIPromptsActive(true);
+            }
 
             BatHelper.BatJumps = 0;
             SpinHelper.SpinUnlocked = false;
