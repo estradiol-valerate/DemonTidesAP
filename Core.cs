@@ -361,6 +361,7 @@ namespace DemonTidesAP
             }
 
             BatHelper.BatJumps = 0;
+            BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
             SpinHelper.SpinUnlocked = false;
             SnakeHelper.SnakeUnlocked = false;
             BoostHelper.BoostUnlocked = false;
