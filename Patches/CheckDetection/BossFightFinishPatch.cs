@@ -23,8 +23,8 @@ public static class BossFightFinishPatch
                 check_name = "Roc";
                 break;
             case "RagnarBossFightController":
-                check_name = "Ragnar";
-                break;
+                Core.session.SetGoalAchieved();
+                return;
             default:
                 check_name = "test failed";
                 break;
@@ -35,8 +35,11 @@ public static class BossFightFinishPatch
         if (id == -1) return;
 
         Core.APReportCollectedLocation(id);
-        ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
-        Core.SetDisplayItemFromAPItem(iteminfo);
+        if (Core.ScoutedItems.Keys.Contains(id))
+        {
+            ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
+            Core.SetDisplayItemFromAPItem(iteminfo);
+        }
         
     }
 }

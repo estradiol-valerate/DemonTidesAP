@@ -20,7 +20,10 @@ public static class ChestOpenPatch
         if (id == -1) return;
 
         Core.APReportCollectedLocation(id);
-        ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
-        Core.SetDisplayItemFromAPItem(iteminfo);
+        if (Core.ScoutedItems.Keys.Contains(id))
+        {
+            ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
+            Core.SetDisplayItemFromAPItem(iteminfo);
+        }
     }
 }

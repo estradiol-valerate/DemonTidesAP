@@ -91,11 +91,7 @@ namespace DemonTidesAP
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            if (Debug)
-            {
-                LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
-            }
-            
+            if (Debug) LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
@@ -237,9 +233,9 @@ namespace DemonTidesAP
 
         public static void GiveAPItem(string ItemName)
         {
-            if (ItemIDHelper.NamestoItems.ContainsKey(ItemName))
+            if (ItemIDHelper.NamestoIDs.ContainsKey(ItemName))
             {
-                GiveItem(ItemIDHelper.NamestoItems[ItemName]);
+                GiveItem(ItemIDHelper.NamestoIDs[ItemName]);
             } else
             {
                 switch (ItemName)
@@ -295,7 +291,7 @@ namespace DemonTidesAP
 
         public static void OnItemReceived(ReceivedItemsHelper helper)
         {
-            Logger.Msg("OnItemReceived Called");
+            if(Debug) Logger.Msg("OnItemReceived Called");
             ItemInfo item = helper.PeekItem();
 
             string recieved_text = $"You Recieved: {item.ItemDisplayName}";
@@ -370,13 +366,7 @@ namespace DemonTidesAP
             CheckpointHelper.CanPlaceCheckpoint = false;
             ItemArrowHelper.CanUseArrow = false;
 
-            int length = LocationsIDHelper.NamestoIDs.Count;
-            List<long> ids = new List<long>();
-            foreach (string name in LocationsIDHelper.NamestoIDs.Keys)
-            {
-                ids.Add(session.Locations.GetLocationIdFromName(GameName, name));
-            }
-            MelonCoroutines.Start(ScoutLocationsInScene(ids.ToArray()));
+            MelonCoroutines.Start(ScoutLocationsInScene(session.Locations.AllLocations.ToArray()));
         }
 
         public static void APReportCollectedLocation(params long[] ids)
@@ -398,9 +388,9 @@ namespace DemonTidesAP
 
             if (iteminfo.Player.Name == Core.PlayerName)
             {
-                ItemData item = PlatformManager.Instance.GetItem(LocationsIDHelper.NamestoIDs[iteminfo.ItemName]);
-                if (item != null) 
+                if (ItemIDHelper.NamestoIDs.ContainsKey(iteminfo.ItemName)) 
                 {
+                    ItemData item = PlatformManager.Instance.GetItem(ItemIDHelper.NamestoIDs[iteminfo.ItemName]);
                     ModelHelper model = new ModelHelper(item);
                     Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
                 } else
@@ -426,7 +416,7 @@ namespace DemonTidesAP
                             Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
                             break;
                         case var _ when "Golden Gear" == iteminfo.ItemName:
-                            foreach(ItemData item_data in PlatformManager.Instance.allItems)
+                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
                             {
                                 if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
                                 {

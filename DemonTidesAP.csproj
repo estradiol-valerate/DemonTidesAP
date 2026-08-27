@@ -102,7 +102,6 @@
 		<Compile Include="Patches\ItemArrowPatch.cs" />
 		<Compile Include="Patches\locator\NotificationUILocator.cs" />
 		<Compile Include="Patches\locator\SaveDataManagerLocator.cs" />
-		<Compile Include="Patches\locator\TalismanInformationSectionUILocator.cs" />
 		<Compile Include="Patches\RewardMenuExitPatch.cs" />
 		<Compile Include="Patches\RewardMenuSetPatch.cs" />
 		<Compile Include="Patches\locator\TittleMenuLocator.cs" />
