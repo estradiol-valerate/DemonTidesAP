@@ -108,6 +108,7 @@
 		<Compile Include="Patches\TitleMenuDestroyedPatch.cs" />
 		<Compile Include="Patches\WaterPatch.cs" />
 		<Compile Include="Patches\InjectRandoPatch.cs" />
+		<Compile Include="Preferences.cs" />
 	</ItemGroup>
 
 	<ItemGroup>

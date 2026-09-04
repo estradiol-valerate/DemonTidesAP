@@ -73,8 +73,8 @@ namespace DemonTidesAP
         {
             LoggerInstance.Msg("Initialized.");
 
+            Preferences.Init();
             MelonCoroutines.Start(LoadAssetBundle());
-
             
             Connected = false;
             BatHelper.BatJumps = 1;
@@ -291,13 +291,13 @@ namespace DemonTidesAP
 
         public static void OnItemReceived(ReceivedItemsHelper helper)
         {
-            if(Debug) Logger.Msg("OnItemReceived Called");
             ItemInfo item = helper.PeekItem();
+            if (Debug) Logger.Msg($"OnItemReceived Called: {helper.Index}, {item.ItemDisplayName}, {item.Player.Name}");
 
-            string recieved_text = $"You Recieved: {item.ItemDisplayName}";
-            Logger.Msg(recieved_text);
+            string received_text = $"<color=#{Preferences.GetColorForItemFlags(item.Flags)}>{item.ItemDisplayName}</color>";
+            string player_text = $"<color=#{(item.Player.Name == PlayerName ? Preferences.colorPlayerSelf.ToHtmlStringRGBA() : Preferences.colorPlayerOther.ToHtmlStringRGBA())}>{item.Player.Name}</color>";
             ItemNameQueue.Add(item.ItemName);
-            notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
+            notificationQueue.PushNotification(received_text, $"From {player_text}!");
 
             helper.DequeueItem();
         }
@@ -404,7 +404,7 @@ namespace DemonTidesAP
                             Core.SetDisplayItem(APModel, "You Found Boosting", "Go Kick Some Ass.");
                             break;
                         case var _ when CheckpointHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPiont?"); ;
+                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPoint?"); ;
                             break;
                         case var _ when ItemArrowHelper.name == iteminfo.ItemName:
                             Core.SetDisplayItem(APModel, "You Found The Item Arrow", "Meh.");
