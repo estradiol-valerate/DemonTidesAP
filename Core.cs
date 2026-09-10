@@ -21,7 +21,7 @@ namespace DemonTidesAP
 {
     public class Core : MelonMod
     {
-        public static bool Debug = true;
+        public static bool Debug = false;
         public static bool Connected;
 
         public static NotificationUI notificationUI;
@@ -59,6 +59,8 @@ namespace DemonTidesAP
         public static List<string> ItemNameQueue = new List<string>();
 
         public static List<GearBitZone> GearBitZoneList = new List<GearBitZone>();
+
+        public static int TotalSlots;
 
         public static IEnumerator LoadAssetBundle()
         {
@@ -262,18 +264,13 @@ namespace DemonTidesAP
                         SpinHelper.SpinUnlocked = true;
                         break;
                     case var _ when "Golden Gear" == ItemName:
-                        foreach (ItemData item_data in PlatformManager.Instance.allItems)
-                        {
-                            if (item_data.nameContent == "Golden Gear" && !GearCollected.Contains(item_data.internalId))
-                            {
-                                GearCollected.Add(item_data.internalId);
-                                GiveItem(item_data.internalId);
-                                break;
-                            }
-                        }
+                        GiveItem(GearOrderHelper.GetGearID());
                         break;
                     case var _ when "Talisman Slot" == ItemName:
-                        if(SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5){SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++; }
+                        TotalSlots++;
+                        if(SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5 && SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < TotalSlots) 
+                        {SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++;}
+
                         break;
                     case var _ when "10 Eyetems" == ItemName:
                         SaveDataManager.Instance.CurrentSaveData.CurrentEyetemCount += 10;
@@ -356,6 +353,7 @@ namespace DemonTidesAP
                 ConnectMenu.Instance.SetUIPromptsActive(true);
             }
 
+            TotalSlots = 2;
             BatHelper.BatJumps = 0;
             BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
             SpinHelper.SpinUnlocked = false;

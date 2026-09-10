@@ -79,6 +79,7 @@
 		<Compile Include="Helpers\BatHelper.cs" />
 		<Compile Include="Helpers\BoostHelper.cs" />
 		<Compile Include="Helpers\CheckpointHelper.cs" />
+		<Compile Include="Helpers\GearOrderHelper.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
 		<Compile Include="Helpers\ItemIDHelper.cs" />
 		<Compile Include="Helpers\LocationsIDHelper.cs" />
