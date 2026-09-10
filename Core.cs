@@ -73,8 +73,8 @@ namespace DemonTidesAP
         {
             LoggerInstance.Msg("Initialized.");
 
+            Preferences.Init();
             MelonCoroutines.Start(LoadAssetBundle());
-
             
             Connected = false;
             BatHelper.BatJumps = 1;
@@ -91,11 +91,7 @@ namespace DemonTidesAP
 
         public override void OnSceneWasInitialized(int buildIndex, string sceneName)
         {
-            if (Debug)
-            {
-                LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
-            }
-            
+            if (Debug) LoggerInstance.Msg("Scene " + sceneName + " has been initialized.");
         }
 
         public override void OnSceneWasLoaded(int buildIndex, string sceneName)
@@ -237,9 +233,9 @@ namespace DemonTidesAP
 
         public static void GiveAPItem(string ItemName)
         {
-            if (ItemIDHelper.NamestoItems.ContainsKey(ItemName))
+            if (ItemIDHelper.NamestoIDs.ContainsKey(ItemName))
             {
-                GiveItem(ItemIDHelper.NamestoItems[ItemName]);
+                GiveItem(ItemIDHelper.NamestoIDs[ItemName]);
             } else
             {
                 switch (ItemName)
@@ -295,13 +291,13 @@ namespace DemonTidesAP
 
         public static void OnItemReceived(ReceivedItemsHelper helper)
         {
-            Logger.Msg("OnItemReceived Called");
             ItemInfo item = helper.PeekItem();
+            if (Debug) Logger.Msg($"OnItemReceived Called: {helper.Index}, {item.ItemDisplayName}, {item.Player.Name}");
 
-            string recieved_text = $"You Recieved: {item.ItemDisplayName}";
-            Logger.Msg(recieved_text);
+            string received_text = $"<color=#{Preferences.GetColorForItemFlags(item.Flags)}>{item.ItemDisplayName}</color>";
+            string player_text = $"<color=#{(item.Player.Name == PlayerName ? Preferences.colorPlayerSelf.ToHtmlStringRGBA() : Preferences.colorPlayerOther.ToHtmlStringRGBA())}>{item.Player.Name}</color>";
             ItemNameQueue.Add(item.ItemName);
-            notificationQueue.PushNotification(recieved_text, $"From: {item.Player.Name}");
+            notificationQueue.PushNotification(received_text, $"From {player_text}!");
 
             helper.DequeueItem();
         }
@@ -338,6 +334,9 @@ namespace DemonTidesAP
                 }
                 
                 Logger.Error(errorMessage);
+
+                ConnectMenu.Instance?.SetResult($"Connection failed:\n<color=red>{String.Join("\n", failure.Errors)}</color>");
+
                 return; // Did not connect, show the user the contents of `errorMessage`
             }
 
@@ -350,7 +349,15 @@ namespace DemonTidesAP
             Logger.Msg(successMessage);
             PlayerName = user;
 
+            if (ConnectMenu.Instance != null)
+            {
+                ConnectMenu.Instance.SetResult("Connected successfully!");
+                ConnectMenu.Instance.SetInputsInteractable(false);
+                ConnectMenu.Instance.SetUIPromptsActive(true);
+            }
+
             BatHelper.BatJumps = 0;
+            BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
             SpinHelper.SpinUnlocked = false;
             SnakeHelper.SnakeUnlocked = false;
             BoostHelper.BoostUnlocked = false;
@@ -359,13 +366,7 @@ namespace DemonTidesAP
             CheckpointHelper.CanPlaceCheckpoint = false;
             ItemArrowHelper.CanUseArrow = false;
 
-            int length = LocationsIDHelper.NamestoIDs.Count;
-            List<long> ids = new List<long>();
-            foreach (string name in LocationsIDHelper.NamestoIDs.Keys)
-            {
-                ids.Add(session.Locations.GetLocationIdFromName(GameName, name));
-            }
-            MelonCoroutines.Start(ScoutLocationsInScene(ids.ToArray()));
+            MelonCoroutines.Start(ScoutLocationsInScene(session.Locations.AllLocations.ToArray()));
         }
 
         public static void APReportCollectedLocation(params long[] ids)
@@ -387,9 +388,9 @@ namespace DemonTidesAP
 
             if (iteminfo.Player.Name == Core.PlayerName)
             {
-                ItemData item = PlatformManager.Instance.GetItem(LocationsIDHelper.NamestoIDs[iteminfo.ItemName]);
-                if (item != null) 
+                if (ItemIDHelper.NamestoIDs.ContainsKey(iteminfo.ItemName)) 
                 {
+                    ItemData item = PlatformManager.Instance.GetItem(ItemIDHelper.NamestoIDs[iteminfo.ItemName]);
                     ModelHelper model = new ModelHelper(item);
                     Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
                 } else
@@ -403,7 +404,7 @@ namespace DemonTidesAP
                             Core.SetDisplayItem(APModel, "You Found Boosting", "Go Kick Some Ass.");
                             break;
                         case var _ when CheckpointHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPiont?"); ;
+                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPoint?"); ;
                             break;
                         case var _ when ItemArrowHelper.name == iteminfo.ItemName:
                             Core.SetDisplayItem(APModel, "You Found The Item Arrow", "Meh.");
@@ -415,7 +416,7 @@ namespace DemonTidesAP
                             Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
                             break;
                         case var _ when "Golden Gear" == iteminfo.ItemName:
-                            foreach(ItemData item_data in PlatformManager.Instance.allItems)
+                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
                             {
                                 if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
                                 {

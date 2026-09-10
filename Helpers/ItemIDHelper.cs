@@ -8,7 +8,7 @@ namespace DemonTidesAP.Helpers;
 
 public static class ItemIDHelper
 {
-    public static Dictionary<string, string> NamestoItems { get; } = new()
+    public static Dictionary<string, string> NamestoIDs { get; } = new()
     {
         ["Outfit Neon Splash Dress"] = "b0eb2e54-23e8-4079-a89a-c01d03238487",
         ["Outfit Tower Dress"] = "e1d51818-c82e-42e5-be80-405274eebec5",
