@@ -21,7 +21,13 @@ namespace DemonTidesAP
 {
     public class Core : MelonMod
     {
-        public static bool Debug = false;
+        public static bool Debug = 
+#if DEBUG
+    true;
+#else
+    false;
+#endif
+
         public static bool Connected;
 
         public static NotificationUI notificationUI;
