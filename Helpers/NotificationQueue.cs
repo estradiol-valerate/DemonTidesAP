@@ -35,7 +35,7 @@ public class NotificationQueue : MonoBehaviour
     {
         if (notificationUI.timer <= 0)
         {
-            MelonLogger.Msg($"PushNotification: {notificationUI.timer}");
+            if(Core.Debug) MelonLogger.Msg($"PushNotification: {notificationUI.timer}");
             APItemNotification(item_name, slot_name);
         } else
         {
