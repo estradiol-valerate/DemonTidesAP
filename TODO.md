@@ -48,6 +48,10 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 - [ ] Each individual Unique Eyetem 
 - [ ] The things you need to do to trigger the boss fights (3 for Tridentus and Roc, 6 for Jester)
 
+### Misc Features
+- [ ] In Game Tracker
+- [ ] Add Talismans to logic
+
 ### v0.2.0 Requirments:
 #### Refactors:
 - [ ] Skip the reward screen on all relevent checks
@@ -59,6 +63,8 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 - [ ] Island Discovered Check
 - [ ] Variable Starting Health
 - [ ] Memory Checks
+- [ ] In Game Tracker
+- [ ] Add Talismans to logic
 
 #### Nice To Haves:
 - [ ] Random Starting Island
