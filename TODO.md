@@ -51,6 +51,7 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 ### Misc Features
 - [ ] In Game Tracker
 - [ ] Add Talismans to logic
+- [ ] Add Death Link
 
 ### v0.2.0 Requirments:
 #### Refactors:
@@ -65,6 +66,7 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 - [ ] Memory Checks
 - [ ] In Game Tracker
 - [ ] Add Talismans to logic
+- [ ] Add Death Link
 
 #### Nice To Haves:
 - [ ] Random Starting Island
