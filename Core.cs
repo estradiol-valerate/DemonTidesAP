@@ -12,7 +12,6 @@ using System.Collections;
 using UnityEngine;
 using static MelonLoader.MelonLogger;
 using System.Reflection;
-using Harmony;
 
 [assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley, TRPG0", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
@@ -227,7 +226,7 @@ namespace DemonTidesAP
         public static void GiveItem(string id)
         {
             SaveData CurrentSave = saveDataManager.CurrentSaveData;
-            CurrentSave.randomizerDictionary[id] = "1";
+            if (CurrentSave.randomizerDictionary.ContainsKey(id)) CurrentSave.randomizerDictionary[id] = "1";
 
             PlatformManager platformManager = PlatformManager.Instance;
             UnlockItem unlock = new UnlockItem();
@@ -236,7 +235,7 @@ namespace DemonTidesAP
             unlock.data = itemData;
             unlock.Unlock();
 
-            CurrentSave.randomizerDictionary[id] = DisplayItemID;
+            if (CurrentSave.randomizerDictionary.ContainsKey(id)) CurrentSave.randomizerDictionary[id] = DisplayItemID;
         }
 
         public static void GiveAPItem(string ItemName)
@@ -453,6 +452,19 @@ namespace DemonTidesAP
             else
             {
                 Core.SetDisplayItem(Core.APModel, $"You Found: {iteminfo.ItemDisplayName}", $"For: {iteminfo.Player.Name}");
+            }
+        }
+
+        public static void LocationDetected(string check_name)
+        {
+            long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
+            if (id == -1) return;
+
+            Core.APReportCollectedLocation(id);
+            if (Core.ScoutedItems.Keys.Contains(id))
+            {
+                ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
+                Core.SetDisplayItemFromAPItem(iteminfo);
             }
         }
     }
