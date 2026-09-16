@@ -3,14 +3,17 @@ using Il2CppFabraz;
 using Il2CppFabraz.UI;
 using MelonLoader;
 using UnityEngine;
+using Il2CppSystem;
 
 namespace DemonTidesAP.Patches;
 
 [HarmonyPatch(typeof(RewardMenu), "Set")]
 public static class RewardMenuSetPatch
 {
-    public static void Postfix(ref RewardMenu __instance)
+    public static bool Prefix(ref RewardMenu __instance, Il2CppSystem.Action clear)
     {
-        //keep deleteing and remaking thos patch so im just gonna keep it for now.
+        if (!Core.Connected && !Core.Debug) return true;
+        clear.Invoke();
+        return false;
     }
 }

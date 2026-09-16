@@ -31,15 +31,6 @@ public static class BossFightFinishPatch
         }
         if (Core.Debug) Core.Logger.Msg($"Boss Fight: {check_name}");
 
-        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
-        if (id == -1) return;
-
-        Core.APReportCollectedLocation(id);
-        if (Core.ScoutedItems.Keys.Contains(id))
-        {
-            ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
-            Core.SetDisplayItemFromAPItem(iteminfo);
-        }
-        
+        Core.LocationDetected(check_name);
     }
 }

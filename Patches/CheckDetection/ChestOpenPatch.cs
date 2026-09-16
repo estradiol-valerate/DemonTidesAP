@@ -18,14 +18,6 @@ public static class ChestOpenPatch
         if (!LocationsIDHelper.IDstoNames.ContainsKey(__instance.id.getID)) return;
 
         string check_name = LocationsIDHelper.IDstoNames[__instance.id.getID];
-        long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
-        if (id == -1) return;
-
-        Core.APReportCollectedLocation(id);
-        if (Core.ScoutedItems.Keys.Contains(id))
-        {
-            ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
-            Core.SetDisplayItemFromAPItem(iteminfo);
-        }
+        Core.LocationDetected(check_name);
     }
 }
