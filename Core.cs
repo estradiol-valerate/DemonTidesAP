@@ -232,10 +232,13 @@ namespace DemonTidesAP
             UnlockItem unlock = new UnlockItem();
 
             ItemData itemData = platformManager.GetItem(id);
+            string original_locationDescriptionContent = itemData.locationDescriptionContent;
+            itemData.locationDescriptionContent = "AP";
             unlock.data = itemData;
             unlock.Unlock();
 
             if (CurrentSave.randomizerDictionary.ContainsKey(id)) CurrentSave.randomizerDictionary[id] = DisplayItemID;
+            itemData.locationDescriptionContent = original_locationDescriptionContent;
         }
 
         public static void GiveAPItem(string ItemName)

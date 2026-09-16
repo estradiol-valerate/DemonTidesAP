@@ -56,7 +56,7 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 ### v0.2.0 Requirments:
 #### Refactors:
 - [x] Skip the reward screen on all relevent checks
-- [ ] No longer require randomizer mode to play archipelago
+- [x] No longer require randomizer mode to play archipelago
 
 #### Features:
 - [ ] All win cons implemented 
