@@ -9,6 +9,7 @@ public static class SpinPatch
 {
     static bool Prefix(ref bool __result)
     {
+        BatHelper.AssertBatJumps();
         if (!Core.Connected || SpinHelper.SpinUnlocked)
             return true;
         
