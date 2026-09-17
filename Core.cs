@@ -13,7 +13,7 @@ using UnityEngine;
 using static MelonLoader.MelonLogger;
 using System.Reflection;
 
-[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.0.1", "estradiol-valerate, RobertSPratley, TRPG0", null)]
+[assembly: MelonInfo(typeof(DemonTidesAP.Core), "DemonTidesAP", "0.1.2", "estradiol-valerate, RobertSPratley, TRPG0", null)]
 [assembly: MelonGame("Fabraz", "Demon Tides")]
 
 namespace DemonTidesAP
@@ -151,7 +151,7 @@ namespace DemonTidesAP
             {
                 debug_unlocked = !debug_unlocked;
                 BatHelper.BatJumps = debug_unlocked ? 1 : 0;
-                BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                BatHelper.AssertBatJumps();
                 SpinHelper.SpinUnlocked = debug_unlocked;
                 SnakeHelper.SnakeUnlocked = debug_unlocked;
                 BoostHelper.BoostUnlocked = debug_unlocked;
@@ -183,7 +183,7 @@ namespace DemonTidesAP
             if (Input.GetKeyDown(KeyCode.Z) && Debug)
             {
                 BatHelper.BatJumps = 1 - BatHelper.BatJumps;
-                BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                BatHelper.AssertBatJumps();
             }
 
             if (Input.GetKeyDown(KeyCode.X) && Debug)
@@ -252,7 +252,7 @@ namespace DemonTidesAP
                 {
                     case var _ when BatHelper.name == ItemName:
                         BatHelper.BatJumps = 1;
-                        BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+                        BatHelper.AssertBatJumps();
                         break;
                     case var _ when BoostHelper.name == ItemName:
                         BoostHelper.BatBoostUnlocked = true;
@@ -363,7 +363,7 @@ namespace DemonTidesAP
 
             TotalSlots = 2;
             BatHelper.BatJumps = 0;
-            BeebzCharacterController.jumping.maxBatJumps = BatHelper.BatJumps;
+            BatHelper.AssertBatJumps();
             SpinHelper.SpinUnlocked = false;
             SnakeHelper.SnakeUnlocked = false;
             BoostHelper.BoostUnlocked = false;

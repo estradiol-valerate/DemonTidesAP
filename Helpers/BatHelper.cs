@@ -10,4 +10,10 @@ public class BatHelper
         get => batJumps;
         set => batJumps = value;
     }
+
+    public static void AssertBatJumps()
+    {
+        Core.BeebzCharacterController.jumping.maxBatJumps = batJumps;
+        Core.BeebzCharacterController.optica.batOpticaConsumed = (batJumps == 0);
+    }
 }
