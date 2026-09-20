@@ -246,7 +246,10 @@ namespace DemonTidesAP
             if (ItemIDHelper.NamestoIDs.ContainsKey(ItemName))
             {
                 GiveItem(ItemIDHelper.NamestoIDs[ItemName]);
-            } else
+            } else if (IslandLockingHelper.IsLocked.Keys.Contains(ItemName)) 
+            {
+				IslandLockingHelper.IsLocked[ItemName] = false;
+			} else
             {
                 switch (ItemName)
                 {
@@ -276,8 +279,8 @@ namespace DemonTidesAP
                         break;
                     case var _ when "Talisman Slot" == ItemName:
                         TotalSlots++;
-                        if(SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5 && SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < TotalSlots) 
-                        {SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++;}
+                        if (SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < 5 && SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked < TotalSlots)
+                        { SaveDataManager.Instance.CurrentSaveData.TalismanSlotsUnlocked++; }
 
                         break;
                     case var _ when "10 Eyetems" == ItemName:
@@ -388,87 +391,15 @@ namespace DemonTidesAP
             ScoutedItems = new Dictionary<long, ScoutedItemInfo>(task.Result);
         }
 
-        public static void SetDisplayItemFromAPItem(ScoutedItemInfo iteminfo)
-        {
-            Logger.Msg($"You Found: {iteminfo.ItemDisplayName}");
-
-            if (iteminfo.Player.Name == Core.PlayerName)
-            {
-                if (ItemIDHelper.NamestoIDs.ContainsKey(iteminfo.ItemName)) 
-                {
-                    ItemData item = PlatformManager.Instance.GetItem(ItemIDHelper.NamestoIDs[iteminfo.ItemName]);
-                    ModelHelper model = new ModelHelper(item);
-                    Core.SetDisplayItem(model, item.flavorContent, item.locationDescriptionContent);
-                } else
-                {
-                    switch (iteminfo.ItemName) 
-                    {
-                        case var _ when BatHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The Bat Form", "Now Get Jumpin.");
-                            break;
-                        case var _ when BoostHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found Boosting", "Go Kick Some Ass.");
-                            break;
-                        case var _ when CheckpointHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The CheckPoint", "Placed A CheckPoint?"); ;
-                            break;
-                        case var _ when ItemArrowHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The Item Arrow", "Meh.");
-                            break;
-                        case var _ when SnakeHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The Snake Form", "Rolling Around At The Speed of Sound");
-                            break;
-                        case var _ when SpinHelper.name == iteminfo.ItemName:
-                            Core.SetDisplayItem(APModel, "You Found The Spin Form", "I'm Getting Dizzy");
-                            break;
-                        case var _ when "Golden Gear" == iteminfo.ItemName:
-                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
-                            {
-                                if(item_data.nameContent == "Golden Gear" && !GearShown.Contains(item_data.internalId))
-                                {
-                                    GearShown.Add(item_data.internalId);
-                                    ModelHelper gearmodel = new ModelHelper(item_data);
-                                    Core.SetDisplayItem(gearmodel, item_data.flavorContent, item_data.locationDescriptionContent);
-                                    break;
-                                }
-                            }
-                            break;
-                        case var _ when "Talisman Slot" == iteminfo.ItemName:
-                            foreach (ItemData item_data in PlatformManager.Instance.allItems)
-                            {
-                                if (item_data.nameContent == "Talisman Slot" && !GearShown.Contains(item_data.internalId))
-                                {
-                                    GearShown.Add(item_data.internalId);
-                                    ModelHelper model = new ModelHelper(item_data);
-                                    Core.SetDisplayItem(model, item_data.flavorContent, item_data.locationDescriptionContent);
-                                    break;
-                                }
-                            }
-                            break;
-                        case var _ when "10 Eyetems" == iteminfo.ItemName:
-                            SetDisplayItem(APModel, "You Got 10 Eyetems", "Don't Spend Them All in One Place");
-                            break;
-                    }
-                }
-                
-            }
-            else
-            {
-                Core.SetDisplayItem(Core.APModel, $"You Found: {iteminfo.ItemDisplayName}", $"For: {iteminfo.Player.Name}");
-            }
-        }
-
+        
         public static void LocationDetected(string check_name)
         {
+            if (Core.Debug) Logger.Msg($"Check Detected: {check_name}");
+
             long id = Core.session.Locations.GetLocationIdFromName(Core.GameName, check_name);
             if (id == -1) return;
 
             Core.APReportCollectedLocation(id);
-            if (Core.ScoutedItems.Keys.Contains(id))
-            {
-                ScoutedItemInfo iteminfo = Core.ScoutedItems[id];
-                Core.SetDisplayItemFromAPItem(iteminfo);
-            }
         }
     }
 }

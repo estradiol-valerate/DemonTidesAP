@@ -70,7 +70,7 @@
 	</ItemGroup>
 
 	<PropertyGroup>
-		<AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 	</PropertyGroup>
 
@@ -80,6 +80,7 @@
 		<Compile Include="Helpers\BoostHelper.cs" />
 		<Compile Include="Helpers\CheckpointHelper.cs" />
 		<Compile Include="Helpers\GearOrderHelper.cs" />
+		<Compile Include="Helpers\IslandLockingHelper.cs" />
 		<Compile Include="Helpers\ItemArrowHelper.cs" />
 		<Compile Include="Helpers\ItemIDHelper.cs" />
 		<Compile Include="Helpers\LocationsIDHelper.cs" />
@@ -95,6 +96,8 @@
 		<Compile Include="Patches\CheckDetection\ChallengesCompleteChallengePatch.cs" />
 		<Compile Include="Patches\CheckDetection\ChestOpenPatch.cs" />
 		<Compile Include="ConnectMenu.cs" />
+		<Compile Include="Patches\CheckDetection\VindraPatch.cs" />
+		<Compile Include="Patches\IslandLockerPatch.cs" />
 		<Compile Include="Patches\locator\DisplayItemLocator.cs" />
 		<Compile Include="Patches\locator\BeebzCharacterControllerLocator.cs" />
 		<Compile Include="Patches\locator\GearBitZoneDestroyed.cs" />
