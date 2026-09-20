@@ -32,9 +32,9 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 
 ### Win Conditions:
 - [ ] Set amount of golden gears
-- [ ] Beat all bosses
+- [x] Beat all bosses
 - [x] Beat Ragnar
-- [ ] Get all gears and complete Vindra's Skies
+- [x] Get all gears and complete Vindra's Skies
 
 ### Other Checks:
 - [ ] Discover Islands (at least for the ones with no checks)
@@ -60,7 +60,7 @@ Things are subject to change. If anyone has suggestions, please let me know in t
 
 #### Features:
 - [ ] All win cons implemented 
-- [ ] Locked Islands and Island Unlock Items
+- [x] Locked Islands and Island Unlock Items
 - [ ] Island Discovered Check
 - [ ] Variable Starting Health
 - [ ] Memory Checks
